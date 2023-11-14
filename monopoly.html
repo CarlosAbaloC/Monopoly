@@ -43,6 +43,7 @@
         [class^="casilla"] {
             background-color: red;
             border: 3px solid black;
+            position: relative;
         }
 
         .centro{
@@ -52,6 +53,37 @@
             justify-content: center;
             align-items: center;
             font-size: 70;
+        }
+
+        .ficha{
+            width: 40%;
+            height: 40%;
+            text-align: center;
+            font-size: 50px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            
+            border: 5px;
+            border-style: solid;
+            border-color: black;
+            border-radius: 50% 50%;
+
+        }
+
+        #ficha1{
+            background-color: blue;
+            position: absolute;
+            left: 60px;
+            bottom: 35px;
+        }
+        #ficha2{
+            background-color: green;
+            position: absolute;
+            left:0px;
+            bottom: 35px;
         }
     </style>
 </head>
@@ -126,6 +158,11 @@
 
         for(i = 0; i<NUM_JUGADORES; i++){
             ficha = document.createElement('div');
+            ficha.classList.add('ficha')
+            ficha.id = "ficha"+(i+1);
+
+            casillaInicio = document.getElementsByClassName("casilla1")[0];
+            casillaInicio.appendChild(ficha);
         }
     </script>
 
