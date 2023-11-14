@@ -31,6 +31,12 @@
             background-color: cyan;
         }
 
+        .colCentral{
+            display: grid;
+            grid-template-rows: 15% 70% 15% ;
+            gap: 20px;
+        }
+
         .tablero{
             display: grid;
             grid-template-columns: 15fr repeat(6, 10fr) 15fr;
@@ -39,11 +45,19 @@
             border: 5px solid #000;
             background-color: #f5d76e;
             padding: 10px;
+            margin: 0% 12%;
         }
         [class^="casilla"] {
             background-color: red;
             border: 3px solid black;
             position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            
+            
+            
         }
 
         .centro{
@@ -75,15 +89,35 @@
 
         #ficha1{
             background-color: blue;
-            position: absolute;
-            left: 60px;
-            bottom: 35px;
+            /* left: 60px;
+            bottom: 35px; */
         }
         #ficha2{
             background-color: green;
-            position: absolute;
-            left:0px;
-            bottom: 35px;
+            /* left:0px;
+            bottom: 35px; */
+        }
+
+        .info{
+            text-align: center;
+            background-color: lightcoral;
+            display: flex;
+            flex-direction: column-reverse;
+            justify-content: center;
+        }
+        .turno{
+            background-color: bisque;
+        }
+        .cronoGeneral{
+            background-color: #f5d76e;
+        }
+        .dado{
+            background-color: darkblue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0% 40%;
+            
         }
     </style>
 </head>
@@ -101,46 +135,59 @@
             <p style="text-align: center;">CRONOMETRO</p>
         </div>
 
-        <div class="tablero">
-            <!-- Casillas de juego -->
-    
-            <!-- Primera fila -->
-            <div class="casilla1">1</div>
-            <div class="casilla2">2</div>
-            <div class="casilla3">3</div>
-            <div class="casilla4">4</div>
-            <div class="casilla5">5</div>
-            <div class="casilla6">6</div>
-            <div class="casilla7">7</div>
-            <div class="casilla8">8</div>
-    
-            <div class="centro">MONOPOLY</div>
-    
-            <!-- Laterales -->
-            <div class="casilla28">28</div>
-            <div class="casilla9">9</div>
-            <div class="casilla27">27</div>
-            <div class="casilla10">10</div>
-            <div class="casilla26">26</div>
-            <div class="casilla11">11</div>
-            <div class="casilla25">25</div>
-            <div class="casilla12">12</div>
-            <div class="casilla24">24</div>
-            <div class="casilla13">13</div>
-            <div class="casilla23">23</div>
-            <div class="casilla14">14</div>
-    
-            <!-- Ultima fila -->
-            <div class="casilla22">22</div>
-            <div class="casilla21">21</div>
-            <div class="casilla20">20</div>
-            <div class="casilla19">19</div>
-            <div class="casilla18">18</div>
-            <div class="casilla17">17</div>
-            <div class="casilla16">16</div>
-            <div class="casilla15">15</div>
-    
+        <div class="colCentral">
+            <div class="info">
+                <div class="turno">
+                    <p>Turno del jugador 1</p>
+                </div>
+                <div class="cronoGeneral">CRONOMETRO</div>
+                
+            </div>
+            <div class="tablero">
+                <!-- Casillas de juego -->
+        
+                <!-- Primera fila -->
+                <div class="casilla1">1</div>
+                <div class="casilla2">2</div>
+                <div class="casilla3">3</div>
+                <div class="casilla4">4</div>
+                <div class="casilla5">5</div>
+                <div class="casilla6">6</div>
+                <div class="casilla7">7</div>
+                <div class="casilla8">8</div>
+        
+                <div class="centro">MONOPOLY</div>
+        
+                <!-- Laterales -->
+                <div class="casilla28">28</div>
+                <div class="casilla9">9</div>
+                <div class="casilla27">27</div>
+                <div class="casilla10">10</div>
+                <div class="casilla26">26</div>
+                <div class="casilla11">11</div>
+                <div class="casilla25">25</div>
+                <div class="casilla12">12</div>
+                <div class="casilla24">24</div>
+                <div class="casilla13">13</div>
+                <div class="casilla23">23</div>
+                <div class="casilla14">14</div>
+        
+                <!-- Ultima fila -->
+                <div class="casilla22">22</div>
+                <div class="casilla21">21</div>
+                <div class="casilla20">20</div>
+                <div class="casilla19">19</div>
+                <div class="casilla18">18</div>
+                <div class="casilla17">17</div>
+                <div class="casilla16">16</div>
+                <div class="casilla15">15</div>
+        
+            </div>
+            <div class="dado">
+                <p>DADO</p>
+            </div>
         </div>
+        
 
         <div class="jugador" id="j2">
             <p style="text-align: center;">JUGADOR 2</p>
