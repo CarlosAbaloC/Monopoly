@@ -1,6 +1,6 @@
 var dinero1 = 3000;
 var dinero2 = 3000;
-let totalCajas = document.getElementsByClassName("[class^='casilla']").length;
+let totalCajas = document.getElementsByClassName("casilla").length;
 let mensaje = document.getElementById("mensajeMovimiento");
 
 
@@ -30,4 +30,6 @@ function drop(ev) {
         mensaje.textContent = "Ficha colocada en el Jugador 2";
         dinero2 = dinero2 - 500;
     }
+
+    
 }

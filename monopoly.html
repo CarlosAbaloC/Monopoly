@@ -45,7 +45,7 @@
             border: 5px solid #000;
             background-color: #f5d76e;
             padding: 10px;
-            margin: 0% 12%;
+            margin: 4% 8%;
         }
         [class^="casilla"] {
             background-color: red;
@@ -55,6 +55,7 @@
             flex-direction: column;
             justify-content: space-around;
             align-items: center;
+            padding: 0px 15%;
             
             
             
@@ -66,7 +67,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 70;
+            font-size: 50;
         }
 
         .ficha{
@@ -79,8 +80,10 @@
             justify-content: center;
             align-items: center;
 
+            left:0px;
+            bottom: 0px;
             
-            border: 5px;
+            border: 3px;
             border-style: solid;
             border-color: black;
             border-radius: 50% 50%;
@@ -114,10 +117,16 @@
         .dado{
             background-color: darkblue;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             margin: 0% 40%;
             
+        }
+
+        .dado img{
+            width: 100%;
+            height: 100%;
         }
     </style>
 </head>
@@ -140,51 +149,54 @@
                 <div class="turno">
                     <p>Turno del jugador 1</p>
                 </div>
-                <div class="cronoGeneral">CRONOMETRO</div>
+                <div class="cronoGeneral">
+                    <span id="minutos">01</span>:<span id="segundos">00</span>
+                </div>
                 
             </div>
             <div class="tablero">
                 <!-- Casillas de juego -->
         
                 <!-- Primera fila -->
-                <div class="casilla1">1</div>
-                <div class="casilla2">2</div>
-                <div class="casilla3">3</div>
-                <div class="casilla4">4</div>
-                <div class="casilla5">5</div>
-                <div class="casilla6">6</div>
-                <div class="casilla7">7</div>
-                <div class="casilla8">8</div>
+                <div id="1"  class="casilla">1</div>
+                <div id="2"  class="casilla">2</div>
+                <div id="3"  class="casilla">3</div>
+                <div id="4"  class="casilla">4</div>
+                <div id="5"  class="casilla">5</div>
+                <div id="6"  class="casilla">6</div>
+                <div id="7"  class="casilla">7</div>
+                <div id="8"  class="casilla">8</div>
         
                 <div class="centro">MONOPOLY</div>
         
                 <!-- Laterales -->
-                <div class="casilla28">28</div>
-                <div class="casilla9">9</div>
-                <div class="casilla27">27</div>
-                <div class="casilla10">10</div>
-                <div class="casilla26">26</div>
-                <div class="casilla11">11</div>
-                <div class="casilla25">25</div>
-                <div class="casilla12">12</div>
-                <div class="casilla24">24</div>
-                <div class="casilla13">13</div>
-                <div class="casilla23">23</div>
-                <div class="casilla14">14</div>
+                <div id="28" class="casilla">28</div>
+                <div id="9" class="casilla">9</div>
+                <div id="27"  class="casilla">27</div>
+                <div id="10"  class="casilla">10</div>
+                <div id="26"  class="casilla">26</div>
+                <div id="11"  class="casilla">11</div>
+                <div id="25"  class="casilla">25</div>
+                <div id="12"  class="casilla">12</div>
+                <div id="24"  class="casilla">24</div>
+                <div id="13"  class="casilla">13</div>
+                <div id="23"  class="casilla">23</div>
+                <div id="14"  class="casilla">14</div>
         
                 <!-- Ultima fila -->
-                <div class="casilla22">22</div>
-                <div class="casilla21">21</div>
-                <div class="casilla20">20</div>
-                <div class="casilla19">19</div>
-                <div class="casilla18">18</div>
-                <div class="casilla17">17</div>
-                <div class="casilla16">16</div>
-                <div class="casilla15">15</div>
+                <div id="22" class="casilla">22</div>
+                <div id="21"  class="casilla">21</div>
+                <div id="20"  class="casilla">20</div>
+                <div id="19"  class="casilla">19</div>
+                <div id="18"  class="casilla">18</div>
+                <div id="17"  class="casilla">17</div>
+                <div id="16" class="casilla">16</div>
+                <div id="15" class="casilla">15</div>
         
             </div>
             <div class="dado">
-                <p>DADO</p>
+                <!-- <p>DADO</p> -->
+                <img src = "dado.jpg" alt="">
             </div>
         </div>
         
@@ -208,9 +220,183 @@
             ficha.classList.add('ficha')
             ficha.id = "ficha"+(i+1);
 
-            casillaInicio = document.getElementsByClassName("casilla1")[0];
+            casillaInicio = document.getElementById("1");
             casillaInicio.appendChild(ficha);
         }
+
+        //CRONO GENERAL
+        document.addEventListener("DOMContentLoaded", function() {
+  var minutos = 1;
+  var segundos = 0;
+
+  var minutosDisplay = document.getElementById("minutos");
+  var segundosDisplay = document.getElementById("segundos");
+
+  function actualizarCronometro() {
+    segundos--;
+    if (segundos < 0) {
+      segundos = 59;
+      minutos--;
+    }
+
+    if (minutos < 0) {
+      // Aquí puedes añadir acciones una vez que la cuenta regresiva llegue a cero
+      alert("¡Tiempo terminado!");
+      clearInterval(intervalo);
+      minutos = 0;
+      segundos = 0;
+    }
+
+    minutosDisplay.textContent = minutos.toString().padStart(2, "0");
+    segundosDisplay.textContent = segundos.toString().padStart(2, "0");
+  }
+
+  var intervalo = setInterval(actualizarCronometro, 1000);
+});
+
+
+        //MOVIMIENTO DE FICHAS CON DADO
+
+    victoria = false;
+    turno = 0;
+    let numero_casillas = document.getElementsByClassName("casilla").length;
+    casillas = document.getElementsByClassName("casilla")
+
+    tablero = document.getElementsByClassName("tablero")[0];
+
+    f1 = document.getElementById("ficha1");
+    f2 = document.getElementById("ficha2");
+
+    dado = document.getElementsByClassName("dado")[0].getElementsByTagName("img")[0];
+    dado.addEventListener("click", girarDado);
+
+    function moverNCasillas(ficha, despl){
+        console.log("Ficha: "+ficha)
+        estilos = getComputedStyle(ficha);
+
+        if(victoria === false){
+            ficha.style.zIndex = 1;
+
+            ficha_left = estilos.getPropertyValue("left");; console.log("left: "+ficha_left)
+            ficha_bottom = estilos.getPropertyValue("bottom"); console.log("bottom: "+ficha_bottom)
+
+            posActual = numCasillaFicha(ficha);
+            console.log("Posicion actual ficha " + ficha.id + ": " + posActual);
+
+            posFinal = posActual + despl;
+            console.log("Posicion final ficha " + ficha.id + ": " + posFinal);
+
+            if(posFinal >= numero_casillas-1){
+                posFinal -= numero_casillas;
+            }
+            // if(posFinal >= numero_casillas-1){
+            //     posFinal = numero_casillas -1
+            //     victoria = true;
+            // }
+
+            const rectIni = getCasillaEnPos(posActual).getBoundingClientRect();
+            const coordenadaXIni = rectIni.left + window.scrollX;
+            //console.log("coordenadaX: "+coordenadaXIni)
+            const coordenadaYIni = rectIni.top + window.scrollY;
+
+
+            const rectFinal = getCasillaEnPos(posFinal).getBoundingClientRect();
+            const coordenadaX = rectFinal.left + window.scrollX;
+            //console.log("coordenadaX: "+coordenadaX)
+            const coordenadaY = rectFinal.top + window.scrollY;
+            console.log("coordenadaY: "+coordenadaY)
+
+            // Crea una nueva animación solo para la ficha
+            const animation = ficha.animate(
+                [
+                    { left: ficha_left , bottom: ficha_bottom, transform: 'rotate(0deg)'},
+                    { left: coordenadaX-coordenadaXIni+parseInt(ficha_left) + "px", bottom: coordenadaYIni-coordenadaY+parseInt(ficha_bottom)+"px", transform: 'rotate(720deg)' }
+                ],
+                {
+                    duration: 2000,
+                    easing: "ease"
+                }
+            );
+            
+
+            animation.onfinish = () => {
+                ficha.style.left = ficha_left+ "px";
+                ficha.style.bottom = ficha_bottom+"px"
+                // tablero.children[posActual].removeChild(ficha);
+                // tablero.children[posFinal].appendChild(ficha);
+                document.getElementById(posActual+"").removeChild(ficha)
+                document.getElementById(posFinal+"").append(ficha)
+
+                if(victoria === true){
+                    alert("VICTORIA")
+                }
+            };
+        }
+
+    }
+
+    function numCasillaFicha(ficha){
+        casillas = document.getElementsByClassName("casilla");
+        for(i=0; i<casillas.length; i++){
+            if(casillas[i] === ficha.parentNode){
+                return Number(casillas[i].id);
+            }
+        }
+        return -1;
+    }
+    function getCasillaEnPos(pos){
+
+        casillas = document.getElementsByClassName("casilla");
+        for(i=0; i<casillas.length; i++){
+            if(casillas[i].id == pos){
+                return casillas[i];
+            }
+        }
+
+        return null;
+
+    }
+
+    // function getNumFichasEnCasilla(numCasilla){
+    //     casillas = document.getElementsByClassName("caja");
+        
+    //     return casillas[numCasilla].getElementsByClassName("ficha").length
+    // }
+
+
+
+    function girarDado(e){
+        if(victoria === false){
+            dado = e.currentTarget;
+        
+            numeroAleatorio = Math.floor(Math.random() * 6) + 1;
+
+            const animation = dado.animate(
+                [
+                    { transform: 'rotateX(0deg) rotateY(0deg) rotateZ(0deg)' },
+                    { transform: 'rotateX(360deg) rotateY(360deg) rotateZ(360deg)' }
+                ],
+                    {
+                        duration: 1500,
+                        easing: "ease"
+                    }
+            );
+
+            animation.onfinish = () => {
+                
+                dado.src="dado"+numeroAleatorio+".png"
+
+                fichaAMover = document.getElementById("ficha"+(turno%2+1))
+                
+                moverNCasillas(fichaAMover, numeroAleatorio)
+                turno++;
+                //textoTurno.textContent = "Turno de la ficha "+((turno%4+1))
+
+            };
+
+        }
+        
+    }
     </script>
 
     
