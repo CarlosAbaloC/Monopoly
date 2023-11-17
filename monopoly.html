@@ -92,11 +92,13 @@
 
         #ficha1{
             background-color: blue;
+            /* position: absolute; */
             /* left: 60px;
             bottom: 35px; */
         }
         #ficha2{
             background-color: green;
+            /* position: absolute; */
             /* left:0px;
             bottom: 35px; */
         }
@@ -226,37 +228,36 @@
 
         //CRONO GENERAL
         document.addEventListener("DOMContentLoaded", function() {
-  var minutos = 1;
-  var segundos = 0;
+    var minutos = 1;
+    var segundos = 0;
 
-  var minutosDisplay = document.getElementById("minutos");
-  var segundosDisplay = document.getElementById("segundos");
+    var minutosDisplay = document.getElementById("minutos");
+    var segundosDisplay = document.getElementById("segundos");
 
-  function actualizarCronometro() {
-    segundos--;
-    if (segundos < 0) {
-      segundos = 59;
-      minutos--;
+    function actualizarCronometro() {
+        segundos--;
+        if (segundos < 0) {
+        segundos = 59;
+        minutos--;
+        }
+
+        if (minutos < 0) {
+        // Aquí puedes añadir acciones una vez que la cuenta regresiva llegue a cero
+        alert("¡Tiempo terminado!");
+        clearInterval(intervalo);
+        minutos = 0;
+        segundos = 0;
+        }
+
+        minutosDisplay.textContent = minutos.toString().padStart(2, "0");
+        segundosDisplay.textContent = segundos.toString().padStart(2, "0");
     }
 
-    if (minutos < 0) {
-      // Aquí puedes añadir acciones una vez que la cuenta regresiva llegue a cero
-      alert("¡Tiempo terminado!");
-      clearInterval(intervalo);
-      minutos = 0;
-      segundos = 0;
-    }
-
-    minutosDisplay.textContent = minutos.toString().padStart(2, "0");
-    segundosDisplay.textContent = segundos.toString().padStart(2, "0");
-  }
-
-  var intervalo = setInterval(actualizarCronometro, 1000);
-});
+    var intervalo = setInterval(actualizarCronometro, 1000);
+    });
 
 
-        //MOVIMIENTO DE FICHAS CON DADO
-
+    //MOVIMIENTO DE FICHAS CON DADO
     victoria = false;
     turno = 0;
     let numero_casillas = document.getElementsByClassName("casilla").length;
@@ -296,21 +297,19 @@
 
             const rectIni = getCasillaEnPos(posActual).getBoundingClientRect();
             const coordenadaXIni = rectIni.left + window.scrollX;
-            //console.log("coordenadaX: "+coordenadaXIni)
             const coordenadaYIni = rectIni.top + window.scrollY;
-
+            console.log("coordenadaXInicio: "+coordenadaXIni+", coordenadaYInicio: "+coordenadaYIni)
 
             const rectFinal = getCasillaEnPos(posFinal).getBoundingClientRect();
-            const coordenadaX = rectFinal.left + window.scrollX;
-            //console.log("coordenadaX: "+coordenadaX)
-            const coordenadaY = rectFinal.top + window.scrollY;
-            console.log("coordenadaY: "+coordenadaY)
+            const coordenadaXFin = rectFinal.left + window.scrollX;
+            const coordenadaYFin = rectFinal.top + window.scrollY;
+            console.log("coordenadaXFinal: "+coordenadaXFin+", coordenadaYFinal: "+coordenadaYFin)
 
             // Crea una nueva animación solo para la ficha
             const animation = ficha.animate(
                 [
-                    { left: ficha_left , bottom: ficha_bottom, transform: 'rotate(0deg)'},
-                    { left: coordenadaX-coordenadaXIni+parseInt(ficha_left) + "px", bottom: coordenadaYIni-coordenadaY+parseInt(ficha_bottom)+"px", transform: 'rotate(720deg)' }
+                    { transform: 'translate(0, 0) rotate(0deg)' }, // Estado inicial: sin traslación y rotación
+                    { transform: `translate(${coordenadaXFin - coordenadaXIni}px, ${coordenadaYFin - coordenadaYIni}px) rotate(720deg)` } // Estado final: traslación y rotación
                 ],
                 {
                     duration: 2000,
@@ -320,12 +319,12 @@
             
 
             animation.onfinish = () => {
-                ficha.style.left = ficha_left+ "px";
-                ficha.style.bottom = ficha_bottom+"px"
+                //ficha.style.left = ficha_left+ "px";
+                //ficha.style.bottom = ficha_bottom+"px"
                 // tablero.children[posActual].removeChild(ficha);
                 // tablero.children[posFinal].appendChild(ficha);
                 document.getElementById(posActual+"").removeChild(ficha)
-                document.getElementById(posFinal+"").append(ficha)
+                document.getElementById(posFinal+"").appendChild(ficha)
 
                 if(victoria === true){
                     alert("VICTORIA")
