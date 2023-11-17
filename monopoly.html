@@ -160,11 +160,40 @@
             border: 1px solid black;
             
         }
-        .cartadiv p:first-child {
-            border-bottom: 1px solid black;
-            padding: 8px;
+        button {
+            background-color: red;
+            border: none;
+            align-content: center;
+        }
+        .cartadiv {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: 1fr 4fr 1fr; 
+            box-sizing: border-box;
+            z-index: 0;
+            gap: 5px
+        }
+        .cartadiv .fila2 {
+            grid-row: 2; 
+            grid-column: 1 / -1;
+        }
+        .cartadiv .fila3 {
+            grid-row: 3; 
+            grid-column: 1 / -1;
+        }
+        .cartadiv p {
+            box-sizing: border-box;
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+            font-size: 16px; /* Ajusta el tamaño de la fuente según tus preferencias */
+            margin: 0; /* Asegura que no haya márgenes predeterminados */
         }
 
+        #c28{
+            writing-mode: vertical-rl;
+        }
+        
     </style>
 </head>
 
@@ -196,45 +225,82 @@
         
                 <!-- Primera fila -->
                 <div id="1"  class="casilla">
-                    <img src="image1.jpg" class = "carta" id = "carta1" alt="" draggable="true" ondragstart="drag(event)">
+                    <div class ="cartadiv" id="carta1">
+                        <p>1</p><p>1</p><p>1</p><p>1</p><button id="mostrar">&#128269;</button>
+                        <p class="fila2">nombre</p>
+                        <P class="fila3">Caracteristicas</P>
+                    </div>
                     1
                 </div>
                 <div id="2"  class="casilla">
-                    <img src="image1.jpg" class = "carta" id = "carta2" alt="" draggable="true" ondragstart="drag(event)">
+                    <div class ="cartadiv" id="carta2" draggable="true" ondragstart="drag(event)">
+                        <p>1</p><p>1</p><p>1</p><p>1</p><button>&#128269;</button>
+                        <p class="fila2">nombre</p>
+                        <P class="fila3">Caracteristicas</P>
+                    </div>
                     2
                 </div>
                 <div id="3"  class="casilla    ">
                     <div class ="cartadiv" id="carta3" draggable="true" ondragstart="drag(event)">
-                        <p>nombre</p>
-                        <P>Caracteristicas</P>
+                        <p>1</p><p>1</p><p>1</p><p>1</p><button>&#128269;</button>
+                        <p class="fila2">nombre</p>
+                        <P class="fila3">Caracteristicas</P>
                     </div>
                     3
                 </div>
                 <div id="4"  class="casilla">
-                    <img src="image1.jpg" class = "carta" id = "carta4" alt="" draggable="true" ondragstart="drag(event)">
+                    <div class ="cartadiv" id="carta4" draggable="true" ondragstart="drag(event)">
+                        <p>1</p><p>1</p><p>1</p><p>1</p><button>&#128269;</button>
+                        <p class="fila2">nombre</p>
+                        <P class="fila3">Caracteristicas</P>
+                    </div>
                     4
                 </div>
                 <div id="5"  class="casilla">
-                    <img src="image1.jpg" class = "carta" id = "carta5" alt="" draggable="true" ondragstart="drag(event)">
+                    <div class ="cartadiv" id="carta5" draggable="true" ondragstart="drag(event)">
+                        <p>1</p><p>1</p><p>1</p><p>1</p><button>&#128269;</button>
+                        <p class="fila2">nombre</p>
+                        <P class="fila3">Caracteristicas</P>
+                    </div>
                     5
                 </div>
                 <div id="6"  class="casilla">
-                    <img src="image1.jpg" class = "carta" id = "carta6" alt="" draggable="true" ondragstart="drag(event)">
+                    <div class ="cartadiv" id="carta6" draggable="true" ondragstart="drag(event)">
+                        <p>1</p><p>1</p><p>1</p><p>1</p><button>&#128269;</button>
+                        <p class="fila2">nombre</p>
+                        <P class="fila3">Caracteristicas</P>
+                    </div>
                     6
                 </div>
                 <div id="7"  class="casilla">
-                    <img src="image1.jpg" class = "carta" id = "carta7" alt="" draggable="true" ondragstart="drag(event)">
+                    <div class ="cartadiv" id="carta7" draggable="true" ondragstart="drag(event)">
+                        <p>1</p><p>1</p><p>1</p><p>1</p><button>&#128269;</button>
+                        <p class="fila2">nombre</p>
+                        <P class="fila3">Caracteristicas</P>
+                    </div>
                     7
                 </div>
                 <div id="8"  class="casilla">
-                    <img src="image1.jpg" class = "carta" id = "carta8" alt="" draggable="true" ondragstart="drag(event)">
+                    <div class ="cartadiv" id="carta8">
+                        <p>1</p><p>1</p><p>1</p><p>1</p><button>&#128269;</button>
+                        <p class="fila2">nombre</p>
+                        <P class="fila3">Caracteristicas</P>
+                    </div>
                     8
                 </div>
         
                 <div class="centro">MONOPOLY</div>
         
                 <!-- Laterales -->
-                <div id="28" class="casilla">28</div>
+                <div id="c28" class="casilla">
+                    <div class ="cartadiv" id="carta8">
+                        <p>1</p><p>1</p><p>1</p><p>1</p><button>&#128269;</button>
+                        <p class="fila2">nombre</p>
+                        <P class="fila3">Caracteristicas</P>
+                    </div>
+                    28
+                </div>
+                
                 <div id="9" class="casilla">9</div>
                 <div id="27"  class="casilla">27</div>
                 <div id="10"  class="casilla">10</div>
@@ -263,6 +329,7 @@
                 <img src = "dado.jpg" alt="">
             </div>
         </div>
+        
         
 
         <div class="jugador" id="j2">
