@@ -3,7 +3,6 @@ var dinero2 = 3000;
 let totalCajas = document.getElementsByClassName("casilla").length;
 let mensaje = document.getElementById("mensajeMovimiento");
 
-
 function allowDrop(ev) {
     ev.preventDefault();
 }
@@ -17,17 +16,23 @@ function drop(ev) {
     var data = ev.dataTransfer.getData("text");
     var targetElement = ev.target;
 
-    if (targetElement.tagName.toLowerCase() === 'img') {
+    // Encuentra el contenedor de jugador (j1 o j2) desde el targetElement
+    while (targetElement && !targetElement.id.startsWith('j')) {
+        targetElement = targetElement.parentElement;
+    }
+
+    if (!targetElement) {
+        // No se encontró el contenedor del jugador
         return;
     }
 
-    if ((targetElement.id === 'jugador1' || targetElement.parentElement.id === 'jugador1') && dinero1 >=500) {
-        document.getElementById('jugador1').appendChild(document.getElementById(data));
-        mensaje.textContent = "Ficha colocada en el Jugador 1";
+    var jugadorId = targetElement.id;
+
+    if (jugadorId === 'jugador1') {
+        targetElement.appendChild(document.getElementById(data));
         dinero1 = dinero1 - 500;
-    } else if (targetElement.id === 'jugador2' || targetElement.parentElement.id === 'jugador2' && dinero2 >= 500) {
-        document.getElementById('jugador2').appendChild(document.getElementById(data));
-        mensaje.textContent = "Ficha colocada en el Jugador 2";
+    } else if (jugadorId === 'jugador2') {
+        targetElement.appendChild(document.getElementById(data));
         dinero2 = dinero2 - 500;
     }
 
