@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Tablero Monopoly</title>
-
+    <script src="Script.js"></script>
     <style>
         html, body {
             background-color: #0077b6;
@@ -29,6 +29,9 @@
 
         .propiedades{
             background-color: cyan;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: repeat(auto, minmax(120px, auto));
         }
 
         .colCentral{
@@ -60,6 +63,14 @@
             
             
         }
+        
+        /* img:active {
+            width: 100px;
+            height: 100px;
+            position: relative;
+            
+            z-index: 3;
+        } */
 
         .centro{
             background-color: orange;
@@ -125,11 +136,37 @@
             margin: 0% 40%;
             
         }
+        img{
+            width: 100%;
+            height: 100%;
+            
+        }
+
+        
+        #jugador1 img, #jugador2 img {
+            padding: 4px;
+            height: 120px;
+            width: 80px;
+
+        }
+        .carta{
+            z-index: 0;
+        }
+    
 
         .dado img{
             width: 100%;
             height: 100%;
         }
+        .cartadiv {
+            border: 1px solid black;
+            
+        }
+        .cartadiv p:first-child {
+            border-bottom: 1px solid black;
+            padding: 8px;
+        }
+
     </style>
 </head>
 
@@ -139,7 +176,7 @@
         <div class="jugador" id="j2"> 
             <p style="text-align: center;">JUGADOR 1</p>
 
-            <div class="propiedades">
+            <div class="propiedades" id="jugador1" ondrop="drop(event)" ondragover="allowDrop(event)">
 
             </div>
 
@@ -160,14 +197,41 @@
                 <!-- Casillas de juego -->
         
                 <!-- Primera fila -->
-                <div id="1"  class="casilla">1</div>
-                <div id="2"  class="casilla">2</div>
-                <div id="3"  class="casilla">3</div>
-                <div id="4"  class="casilla">4</div>
-                <div id="5"  class="casilla">5</div>
-                <div id="6"  class="casilla">6</div>
-                <div id="7"  class="casilla">7</div>
-                <div id="8"  class="casilla">8</div>
+                <div id="1"  class="casilla">
+                    <img src="image1.jpg" class = "carta" id = "carta1" alt="" draggable="true" ondragstart="drag(event)">
+                    1
+                </div>
+                <div id="2"  class="casilla">
+                    <img src="image1.jpg" class = "carta" id = "carta2" alt="" draggable="true" ondragstart="drag(event)">
+                    2
+                </div>
+                <div id="3"  class="casilla    ">
+                    <div class ="cartadiv" id="carta3" draggable="true" ondragstart="drag(event)">
+                        <p>nombre</p>
+                        <P>Caracteristicas</P>
+                    </div>
+                    3
+                </div>
+                <div id="4"  class="casilla">
+                    <img src="image1.jpg" class = "carta" id = "carta4" alt="" draggable="true" ondragstart="drag(event)">
+                    4
+                </div>
+                <div id="5"  class="casilla">
+                    <img src="image1.jpg" class = "carta" id = "carta5" alt="" draggable="true" ondragstart="drag(event)">
+                    5
+                </div>
+                <div id="6"  class="casilla">
+                    <img src="image1.jpg" class = "carta" id = "carta6" alt="" draggable="true" ondragstart="drag(event)">
+                    6
+                </div>
+                <div id="7"  class="casilla">
+                    <img src="image1.jpg" class = "carta" id = "carta7" alt="" draggable="true" ondragstart="drag(event)">
+                    7
+                </div>
+                <div id="8"  class="casilla">
+                    <img src="image1.jpg" class = "carta" id = "carta8" alt="" draggable="true" ondragstart="drag(event)">
+                    8
+                </div>
         
                 <div class="centro">MONOPOLY</div>
         
@@ -206,7 +270,7 @@
         <div class="jugador" id="j2">
             <p style="text-align: center;">JUGADOR 2</p>
 
-            <div class="propiedades">
+            <div class="propiedades" id = "jugador2" ondrop = "drop(event)" ondragover="allowDrop(event)">
 
             </div>
 
