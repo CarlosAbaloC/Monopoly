@@ -5,65 +5,61 @@
     <title>Tablero Monopoly</title>
     <script src="Script.js"></script>
     <style>
-        html, body {
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
             background-color: #0077b6;
             /* display: flex;
             justify-content: center;
             align-items: center;
-            margin: 0; */
+            margin: 0;  */
+
+        }
+
+        .container{
+            height: 100%;
+        }
+
+        .ui {
+            height: 100%;
+            display: grid;
+            grid-template-columns: 1fr 3fr 1fr;
+            grid-template-rows: 1fr 5fr;
             
         }
 
-        .ui{
-            height: 100%;
-            display: grid;
-            grid-template-columns: 1fr 2fr 1fr;
-            gap: 25px;
-        }
+        
 
-        .jugador{
-            display: grid;
-            grid-template-rows: 15% 70% 15%;
-            gap: 20px;
-        }
-
-        .propiedades{
+        .propiedades {
             background-color: cyan;
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
-            grid-template-rows: repeat(auto, minmax(120px, auto));
+            grid-template-rows: repeat(5, 1fr);
         }
 
-        .colCentral{
+        .tablero {
             display: grid;
-            grid-template-rows: 15% 70% 15% ;
-            gap: 20px;
-        }
-
-        .tablero{
-            display: grid;
-            grid-template-columns: 15fr repeat(6, 10fr) 15fr;
-            grid-template-rows: 15fr repeat(6, 10fr) 15fr;
-            gap: 10px;
+            grid-template-columns: 2fr repeat(6, 2fr) 2fr;
+            grid-template-rows: 2fr repeat(6, 2fr) 2fr;
+            
             border: 5px solid #000;
             background-color: #f5d76e;
             padding: 10px;
-            margin: 4% 8%;
         }
-        [class^="casilla"] {
+
+        .casilla {
+            height: 95%;
             background-color: red;
             border: 3px solid black;
             position: relative;
             display: flex;
             flex-direction: column;
-            justify-content: space-around;
             align-items: center;
-            padding: 0px 15%;
-            
-            
-            
+            padding: 0px;
         }
-        
+
         /* img:active {
             width: 100px;
             height: 100px;
@@ -72,28 +68,28 @@
             z-index: 3;
         } */
 
-        .centro{
+        .centro {
             background-color: orange;
             grid-area: 2 / 2 / 8 / 8;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             font-size: 50;
         }
 
-        .ficha{
+        .ficha {
             width: 40%;
-            height: 40%;
+            height: 80%;
             text-align: center;
-            font-size: 50px;
 
             display: flex;
             justify-content: center;
             align-items: center;
 
-            left:0px;
+            left: 0px;
             bottom: 0px;
-            
+
             border: 3px;
             border-style: solid;
             border-color: black;
@@ -101,368 +97,709 @@
 
         }
 
-        #ficha1{
+        #ficha1 {
             background-color: blue;
-            /* position: absolute; */
             /* left: 60px;
             bottom: 35px; */
         }
-        #ficha2{
+
+        #ficha2 {
             background-color: green;
-            /* position: absolute; */
             /* left:0px;
             bottom: 35px; */
         }
 
-        .info{
+        .info {
             text-align: center;
             background-color: lightcoral;
             display: flex;
             flex-direction: column-reverse;
             justify-content: center;
         }
-        .turno{
+
+        .turno {
             background-color: bisque;
         }
-        .cronoGeneral{
+
+        .cronoGeneral {
             background-color: #f5d76e;
         }
-        .dado{
+
+        .dado {
+            z-index: 2;
             background-color: darkblue;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             margin: 0% 40%;
-            
-        }
-        img{
-            width: 100%;
-            height: 100%;
-            
+
         }
 
-        
-        #jugador1 img, #jugador2 img {
+        img {
+            width: 100%;
+            height: 100%;
+
+        }
+
+
+        /* #jugador1 img, #jugador2 img {
             padding: 4px;
             height: 120px;
             width: 80px;
 
-        }
-        .carta{
+        } */
+        .carta {
             z-index: 0;
         }
-    
 
-        .dado img{
+
+        .dado img {
+            
             width: 100%;
             height: 100%;
         }
+
         .cartadiv {
-            border: 1px solid black;
             
+            border: 1px solid black;
+            display: grid;
+            /* grid-template-columns: repeat(5, 1fr); */
+            grid-template-rows: 1fr 2fr 1fr;
+            /* box-sizing: border-box; */
         }
-        .cartadiv p:first-child {
-            border-bottom: 1px solid black;
-            padding: 8px;
+
+        .casas{
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: 1fr;
+        }
+
+        .cartadiv .fila2 {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .cartadiv .fila3 {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .cartadiv p {
+            /* box-sizing: border-box; */
+            /* padding: 10px; */
+            border: 1px solid #ddd;
+            text-align: center;
+            /* font-size: 16px; */
+            /* Ajusta el tamaño de la fuente según tus preferencias */
+            margin: 0;
+            /* Asegura que no haya márgenes predeterminados */
         }
 
     </style>
 </head>
 
 <body>
-
+    <div class="container">
     <div class="ui">
-        <div class="jugador" id="j2"> 
+
+        <div class="nomJug">
             <p style="text-align: center;">JUGADOR 1</p>
-
-            <div class="propiedades" id="jugador1" ondrop="drop(event)" ondragover="allowDrop(event)">
-
-            </div>
-
-            <p style="text-align: center;">CRONOMETRO</p>
         </div>
 
-        <div class="colCentral">
-            <div class="info">
-                <div class="turno">
-                    <p>Turno del jugador 1</p>
+        <div class="info">
+            <div class="turno">
+                <p>Turno del jugador 1</p>
+            </div>
+            <div class="cronoGeneral">
+                <span id="minutos">01</span>:<span id="segundos">00</span>
+            </div>
+        </div>
+
+        <div class="nomJug">
+            <p style="text-align: center;">JUGADOR 2</p>
+        </div>
+
+        <div class="propiedades" id="jugador1" ondrop="drop(event)" ondragover="allowDrop(event)">
+        </div>
+
+        <div class="tablero">
+            <!-- Casillas de juego -->
+
+            <!-- Primera fila -->
+            <div id="1" class="casilla">
+            </div>
+
+            <div id="2" class="casilla">
+                <div class="cartadiv" id="carta1">
+                    <div class="casas">
+                        <p>1</p>
+                        <p>1</p>
+                        <p>1</p>
+                        <p>1</p>
+                        <button id="mostrar">&#128269;</button>
+                    </div>
+                    
+                    <div class="fila2"></div>
+                    <div class="fila3">Caracteristicas</div>
                 </div>
-                <div class="cronoGeneral">
-                    <span id="minutos">01</span>:<span id="segundos">00</span>
+            </div>
+            <div id="3" class="casilla">
+                <div class="cartadiv" id="carta1">
+                    <div class="casas">
+                        <p>1</p>
+                        <p>1</p>
+                        <p>1</p>
+                        <p>1</p>
+                        <button id="mostrar">&#128269;</button>
+                    </div>
+                    
+                    <div class="fila2"></div>
+                    <div class="fila3">Caracteristicas</div>
+                </div>
+            </div>
+            <div id="4" class="casilla">
+                <div class="cartadiv" id="carta1">
+                    <div class="casas">
+                        <p>1</p>
+                        <p>1</p>
+                        <p>1</p>
+                        <p>1</p>
+                        <button id="mostrar">&#128269;</button>
+                    </div>
+                    
+                    <div class="fila2"></div>
+                    <div class="fila3">Caracteristicas</div>
+                </div>
+            </div>
+            <div id="5" class="casilla">
+                <div class="cartadiv" id="carta1">
+                    <div class="casas">
+                        <p>1</p>
+                        <p>1</p>
+                        <p>1</p>
+                        <p>1</p>
+                        <button id="mostrar">&#128269;</button>
+                    </div>
+                    
+                    <div class="fila2"></div>
+                    <div class="fila3">Caracteristicas</div>
                 </div>
                 
             </div>
-            <div class="tablero">
-                <!-- Casillas de juego -->
-        
-                <!-- Primera fila -->
-                <div id="1"  class="casilla">
-                    <img src="image1.jpg" class = "carta" id = "carta1" alt="" draggable="true" ondragstart="drag(event)">
-                    1
-                </div>
-                <div id="2"  class="casilla">
-                    <img src="image1.jpg" class = "carta" id = "carta2" alt="" draggable="true" ondragstart="drag(event)">
-                    2
-                </div>
-                <div id="3"  class="casilla    ">
-                    <div class ="cartadiv" id="carta3" draggable="true" ondragstart="drag(event)">
-                        <p>nombre</p>
-                        <P>Caracteristicas</P>
+            <div id="6" class="casilla">
+
+                <div class="cartadiv" id="carta1">
+                    <div class="casas">
+                        <p>1</p>
+                        <p>1</p>
+                        <p>1</p>
+                        <p>1</p>
+                        <button id="mostrar">&#128269;</button>
                     </div>
-                    3
+                    
+                    <div class="fila2"></div>
+                    <div class="fila3">Caracteristicas</div>
                 </div>
-                <div id="4"  class="casilla">
-                    <img src="image1.jpg" class = "carta" id = "carta4" alt="" draggable="true" ondragstart="drag(event)">
-                    4
-                </div>
-                <div id="5"  class="casilla">
-                    <img src="image1.jpg" class = "carta" id = "carta5" alt="" draggable="true" ondragstart="drag(event)">
-                    5
-                </div>
-                <div id="6"  class="casilla">
-                    <img src="image1.jpg" class = "carta" id = "carta6" alt="" draggable="true" ondragstart="drag(event)">
-                    6
-                </div>
-                <div id="7"  class="casilla">
-                    <img src="image1.jpg" class = "carta" id = "carta7" alt="" draggable="true" ondragstart="drag(event)">
-                    7
-                </div>
-                <div id="8"  class="casilla">
-                    <img src="image1.jpg" class = "carta" id = "carta8" alt="" draggable="true" ondragstart="drag(event)">
-                    8
-                </div>
-        
-                <div class="centro">MONOPOLY</div>
-        
-                <!-- Laterales -->
-                <div id="28" class="casilla">28</div>
-                <div id="9" class="casilla">9</div>
-                <div id="27"  class="casilla">27</div>
-                <div id="10"  class="casilla">10</div>
-                <div id="26"  class="casilla">26</div>
-                <div id="11"  class="casilla">11</div>
-                <div id="25"  class="casilla">25</div>
-                <div id="12"  class="casilla">12</div>
-                <div id="24"  class="casilla">24</div>
-                <div id="13"  class="casilla">13</div>
-                <div id="23"  class="casilla">23</div>
-                <div id="14"  class="casilla">14</div>
-        
-                <!-- Ultima fila -->
-                <div id="22" class="casilla">22</div>
-                <div id="21"  class="casilla">21</div>
-                <div id="20"  class="casilla">20</div>
-                <div id="19"  class="casilla">19</div>
-                <div id="18"  class="casilla">18</div>
-                <div id="17"  class="casilla">17</div>
-                <div id="16" class="casilla">16</div>
-                <div id="15" class="casilla">15</div>
-        
             </div>
-            <div class="dado">
-                <!-- <p>DADO</p> -->
-                <img src = "dado.jpg" alt="">
+            <div id="7" class="casilla">
+
+                <div class="cartadiv" id="carta1">
+                    <div class="casas">
+                        <p>1</p>
+                        <p>1</p>
+                        <p>1</p>
+                        <p>1</p>
+                        <button id="mostrar">&#128269;</button>
+                    </div>
+                    
+                    <div class="fila2"></div>
+                    <div class="fila3">Caracteristicas</div>
+                </div>
             </div>
+            <div id="8" class="casilla">
+
+            </div>
+
+            <div class="centro">
+                MONOPOLY
+                <div class="dado">
+                    
+                    <img src="dado.jpg" alt="">
+                </div>
+            </div>
+
+            <!-- Laterales -->
+            <div id="28" class="casilla">
+                <div class="cartadiv" id="carta1">
+                    <div class="casas">
+                        <p>1</p>
+                        <p>1</p>
+                        <p>1</p>
+                        <p>1</p>
+                        <button id="mostrar">&#128269;</button>
+                    </div>
+                    
+                    <div class="fila2"></div>
+                    <div class="fila3">Caracteristicas</div>
+                </div>
+            </div>
+
+            <div id="9" class="casilla">
+                <div class="cartadiv" id="carta1">
+                    <div class="casas">
+                        <p>1</p>
+                        <p>1</p>
+                        <p>1</p>
+                        <p>1</p>
+                        <button id="mostrar">&#128269;</button>
+                    </div>
+                    
+                    <div class="fila2"></div>
+                    <div class="fila3">Caracteristicas</div>
+                </div>
+            </div>
+            <div id="27" class="casilla">
+                <div class="cartadiv" id="carta1">
+                    <div class="casas">
+                        <p>1</p>
+                        <p>1</p>
+                        <p>1</p>
+                        <p>1</p>
+                        <button id="mostrar">&#128269;</button>
+                    </div>
+                    
+                    <div class="fila2"></div>
+                    <div class="fila3">Caracteristicas</div>
+                </div>
+            </div>
+            <div id="10" class="casilla">
+                <div class="cartadiv" id="carta1">
+                    <div class="casas">
+                        <p>1</p>
+                        <p>1</p>
+                        <p>1</p>
+                        <p>1</p>
+                        <button id="mostrar">&#128269;</button>
+                    </div>
+                    
+                    <div class="fila2"></div>
+                    <div class="fila3">Caracteristicas</div>
+                </div>
+            </div>
+            <div id="26" class="casilla">
+                <div class="cartadiv" id="carta1">
+                    <div class="casas">
+                        <p>1</p>
+                        <p>1</p>
+                        <p>1</p>
+                        <p>1</p>
+                        <button id="mostrar">&#128269;</button>
+                    </div>
+                    
+                    <div class="fila2"></div>
+                    <div class="fila3">Caracteristicas</div>
+                </div>
+            </div>
+            <div id="11" class="casilla">
+                <div class="cartadiv" id="carta1">
+                    <div class="casas">
+                        <p>1</p>
+                        <p>1</p>
+                        <p>1</p>
+                        <p>1</p>
+                        <button id="mostrar">&#128269;</button>
+                    </div>
+                    
+                    <div class="fila2"></div>
+                    <div class="fila3">Caracteristicas</div>
+                </div>
+            </div>
+            <div id="25" class="casilla">
+                <div class="cartadiv" id="carta1">
+                    <div class="casas">
+                        <p>1</p>
+                        <p>1</p>
+                        <p>1</p>
+                        <p>1</p>
+                        <button id="mostrar">&#128269;</button>
+                    </div>
+                    
+                    <div class="fila2"></div>
+                    <div class="fila3">Caracteristicas</div>
+                </div>
+            </div>
+            <div id="12" class="casilla">
+                <div class="cartadiv" id="carta1">
+                    <div class="casas">
+                        <p>1</p>
+                        <p>1</p>
+                        <p>1</p>
+                        <p>1</p>
+                        <button id="mostrar">&#128269;</button>
+                    </div>
+                    
+                    <div class="fila2"></div>
+                    <div class="fila3">Caracteristicas</div>
+                </div>
+            </div>
+            <div id="24" class="casilla">
+                <div class="cartadiv" id="carta1">
+                    <div class="casas">
+                        <p>1</p>
+                        <p>1</p>
+                        <p>1</p>
+                        <p>1</p>
+                        <button id="mostrar">&#128269;</button>
+                    </div>
+                    
+                    <div class="fila2"></div>
+                    <div class="fila3">Caracteristicas</div>
+                </div>
+            </div>
+            <div id="13" class="casilla">
+                <div class="cartadiv" id="carta1">
+                    <div class="casas">
+                        <p>1</p>
+                        <p>1</p>
+                        <p>1</p>
+                        <p>1</p>
+                        <button id="mostrar">&#128269;</button>
+                    </div>
+                    
+                    <div class="fila2"></div>
+                    <div class="fila3">Caracteristicas</div>
+                </div>
+            </div>
+            <div id="23" class="casilla">
+                <div class="cartadiv" id="carta1">
+                    <div class="casas">
+                        <p>1</p>
+                        <p>1</p>
+                        <p>1</p>
+                        <p>1</p>
+                        <button id="mostrar">&#128269;</button>
+                    </div>
+                    
+                    <div class="fila2"></div>
+                    <div class="fila3">Caracteristicas</div>
+                </div>
+            </div>
+            <div id="14" class="casilla">
+                <div class="cartadiv" id="carta1">
+                    <div class="casas">
+                        <p>1</p>
+                        <p>1</p>
+                        <p>1</p>
+                        <p>1</p>
+                        <button id="mostrar">&#128269;</button>
+                    </div>
+                    
+                    <div class="fila2"></div>
+                    <div class="fila3">Caracteristicas</div>
+                </div>
+            </div>
+
+            <!-- Ultima fila -->
+            <div id="22" class="casilla">22</div>
+            <div id="21" class="casilla">
+                <div class="cartadiv" id="carta1">
+                    <div class="casas">
+                        <p>1</p>
+                        <p>1</p>
+                        <p>1</p>
+                        <p>1</p>
+                        <button id="mostrar">&#128269;</button>
+                    </div>
+                    
+                    <div class="fila2"></div>
+                    <div class="fila3">Caracteristicas</div>
+                </div>
+            </div>
+            <div id="20" class="casilla">
+                <div class="cartadiv" id="carta1">
+                    <div class="casas">
+                        <p>1</p>
+                        <p>1</p>
+                        <p>1</p>
+                        <p>1</p>
+                        <button id="mostrar">&#128269;</button>
+                    </div>
+                    
+                    <div class="fila2"></div>
+                    <div class="fila3">Caracteristicas</div>
+                </div>
+            </div>
+            <div id="19" class="casilla">
+                <div class="cartadiv" id="carta1">
+                    <div class="casas">
+                        <p>1</p>
+                        <p>1</p>
+                        <p>1</p>
+                        <p>1</p>
+                        <button id="mostrar">&#128269;</button>
+                    </div>
+                    
+                    <div class="fila2"></div>
+                    <div class="fila3">Caracteristicas</div>
+                </div>
+            </div>
+            <div id="18" class="casilla">
+                <div class="cartadiv" id="carta1">
+                    <div class="casas">
+                        <p>1</p>
+                        <p>1</p>
+                        <p>1</p>
+                        <p>1</p>
+                        <button id="mostrar">&#128269;</button>
+                    </div>
+                    
+                    <div class="fila2"></div>
+                    <div class="fila3">Caracteristicas</div>
+                </div>
+            </div>
+            <div id="17" class="casilla">
+                <div class="cartadiv" id="carta1">
+                    <div class="casas">
+                        <p>1</p>
+                        <p>1</p>
+                        <p>1</p>
+                        <p>1</p>
+                        <button id="mostrar">&#128269;</button>
+                    </div>
+                    
+                    <div class="fila2"></div>
+                    <div class="fila3">Caracteristicas</div>
+                </div>
+            </div>
+            <div id="16" class="casilla">
+                <div class="cartadiv" id="carta1">
+                    <div class="casas">
+                        <p>1</p>
+                        <p>1</p>
+                        <p>1</p>
+                        <p>1</p>
+                        <button id="mostrar">&#128269;</button>
+                    </div>
+                    
+                    <div class="fila2"></div>
+                    <div class="fila3">Caracteristicas</div>
+                </div>
+            </div>
+            <div id="15" class="casilla">
+                
+            </div>
+
         </div>
-        
 
-        <div class="jugador" id="j2">
-            <p style="text-align: center;">JUGADOR 2</p>
+        <div class="propiedades" id="jugador2" ondrop="drop(event)" ondragover="allowDrop(event)">
+        </div>
 
-            <div class="propiedades" id = "jugador2" ondrop = "drop(event)" ondragover="allowDrop(event)">
-
-            </div>
-
+        <!-- <div class="cronoJ1">
             <p style="text-align: center;">CRONOMETRO</p>
         </div>
+        
+
+        <div class="cronoJ1">
+            <p style="text-align: center;">CRONOMETRO</p>
+        </div> -->
+
+
+    </div>
     </div>
 
     <script>
         const NUM_JUGADORES = 2;
 
-        for(i = 0; i<NUM_JUGADORES; i++){
+        for (i = 0; i < NUM_JUGADORES; i++) {
             ficha = document.createElement('div');
             ficha.classList.add('ficha')
-            ficha.id = "ficha"+(i+1);
+            ficha.id = "ficha" + (i + 1);
 
-            casillaInicio = document.getElementById("1");
-            casillaInicio.appendChild(ficha);
+            casillaInicio = document.getElementById("2");
+            espFichas = casillaInicio.getElementsByClassName('fila2')[0]
+            espFichas.appendChild(ficha);
         }
 
         //CRONO GENERAL
-        document.addEventListener("DOMContentLoaded", function() {
-    var minutos = 1;
-    var segundos = 0;
+        document.addEventListener("DOMContentLoaded", function () {
+            var minutos = 1;
+            var segundos = 0;
 
-    var minutosDisplay = document.getElementById("minutos");
-    var segundosDisplay = document.getElementById("segundos");
+            var minutosDisplay = document.getElementById("minutos");
+            var segundosDisplay = document.getElementById("segundos");
 
-    function actualizarCronometro() {
-        segundos--;
-        if (segundos < 0) {
-        segundos = 59;
-        minutos--;
-        }
-
-        if (minutos < 0) {
-        // Aquí puedes añadir acciones una vez que la cuenta regresiva llegue a cero
-        alert("¡Tiempo terminado!");
-        clearInterval(intervalo);
-        minutos = 0;
-        segundos = 0;
-        }
-
-        minutosDisplay.textContent = minutos.toString().padStart(2, "0");
-        segundosDisplay.textContent = segundos.toString().padStart(2, "0");
-    }
-
-    var intervalo = setInterval(actualizarCronometro, 1000);
-    });
-
-
-    //MOVIMIENTO DE FICHAS CON DADO
-    victoria = false;
-    turno = 0;
-    let numero_casillas = document.getElementsByClassName("casilla").length;
-    casillas = document.getElementsByClassName("casilla")
-
-    tablero = document.getElementsByClassName("tablero")[0];
-
-    f1 = document.getElementById("ficha1");
-    f2 = document.getElementById("ficha2");
-
-    dado = document.getElementsByClassName("dado")[0].getElementsByTagName("img")[0];
-    dado.addEventListener("click", girarDado);
-
-    function moverNCasillas(ficha, despl){
-        console.log("Ficha: "+ficha)
-        estilos = getComputedStyle(ficha);
-
-        if(victoria === false){
-            ficha.style.zIndex = 1;
-
-            ficha_left = estilos.getPropertyValue("left");; console.log("left: "+ficha_left)
-            ficha_bottom = estilos.getPropertyValue("bottom"); console.log("bottom: "+ficha_bottom)
-
-            posActual = numCasillaFicha(ficha);
-            console.log("Posicion actual ficha " + ficha.id + ": " + posActual);
-
-            posFinal = posActual + despl;
-            console.log("Posicion final ficha " + ficha.id + ": " + posFinal);
-
-            if(posFinal >= numero_casillas-1){
-                posFinal -= numero_casillas;
-            }
-            // if(posFinal >= numero_casillas-1){
-            //     posFinal = numero_casillas -1
-            //     victoria = true;
-            // }
-
-            const rectIni = getCasillaEnPos(posActual).getBoundingClientRect();
-            const coordenadaXIni = rectIni.left + window.scrollX;
-            const coordenadaYIni = rectIni.top + window.scrollY;
-            console.log("coordenadaXInicio: "+coordenadaXIni+", coordenadaYInicio: "+coordenadaYIni)
-
-            const rectFinal = getCasillaEnPos(posFinal).getBoundingClientRect();
-            const coordenadaXFin = rectFinal.left + window.scrollX;
-            const coordenadaYFin = rectFinal.top + window.scrollY;
-            console.log("coordenadaXFinal: "+coordenadaXFin+", coordenadaYFinal: "+coordenadaYFin)
-
-            // Crea una nueva animación solo para la ficha
-            const animation = ficha.animate(
-                [
-                    { transform: 'translate(0, 0) rotate(0deg)' }, // Estado inicial: sin traslación y rotación
-                    { transform: `translate(${coordenadaXFin - coordenadaXIni}px, ${coordenadaYFin - coordenadaYIni}px) rotate(720deg)` } // Estado final: traslación y rotación
-                ],
-                {
-                    duration: 2000,
-                    easing: "ease"
+            function actualizarCronometro() {
+                segundos--;
+                if (segundos < 0) {
+                    segundos = 59;
+                    minutos--;
                 }
-            );
-            
 
-            animation.onfinish = () => {
-                //ficha.style.left = ficha_left+ "px";
-                //ficha.style.bottom = ficha_bottom+"px"
-                // tablero.children[posActual].removeChild(ficha);
-                // tablero.children[posFinal].appendChild(ficha);
-                document.getElementById(posActual+"").removeChild(ficha)
-                document.getElementById(posFinal+"").appendChild(ficha)
-
-                if(victoria === true){
-                    alert("VICTORIA")
+                if (minutos < 0) {
+                    // Aquí puedes añadir acciones una vez que la cuenta regresiva llegue a cero
+                    alert("¡Tiempo terminado!");
+                    clearInterval(intervalo);
+                    minutos = 0;
+                    segundos = 0;
                 }
-            };
-        }
 
-    }
-
-    function numCasillaFicha(ficha){
-        casillas = document.getElementsByClassName("casilla");
-        for(i=0; i<casillas.length; i++){
-            if(casillas[i] === ficha.parentNode){
-                return Number(casillas[i].id);
+                minutosDisplay.textContent = minutos.toString().padStart(2, "0");
+                segundosDisplay.textContent = segundos.toString().padStart(2, "0");
             }
-        }
-        return -1;
-    }
-    function getCasillaEnPos(pos){
 
-        casillas = document.getElementsByClassName("casilla");
-        for(i=0; i<casillas.length; i++){
-            if(casillas[i].id == pos){
-                return casillas[i];
+            var intervalo = setInterval(actualizarCronometro, 1000);
+        });
+
+
+        //MOVIMIENTO DE FICHAS CON DADO
+        victoria = false;
+        turno = 0;
+        let numero_casillas = document.getElementsByClassName("casilla").length;
+        casillas = document.getElementsByClassName("casilla")
+
+        tablero = document.getElementsByClassName("tablero")[0];
+
+        f1 = document.getElementById("ficha1");
+        f2 = document.getElementById("ficha2");
+
+        dado = document.getElementsByClassName("dado")[0].getElementsByTagName("img")[0];
+        dado.addEventListener("click", girarDado);
+
+        function moverNCasillas(ficha, despl) {
+            console.log("Ficha: " + ficha)
+            estilos = getComputedStyle(ficha);
+
+            if (victoria === false) {
+                ficha.style.zIndex = 1;
+
+                ficha_left = estilos.getPropertyValue("left");; console.log("left: " + ficha_left)
+                ficha_bottom = estilos.getPropertyValue("bottom"); console.log("bottom: " + ficha_bottom)
+
+                posActual = numCasillaFicha(ficha);
+                console.log("Posicion actual ficha " + ficha.id + ": " + posActual);
+
+                posFinal = posActual + despl;
+                console.log("Posicion final ficha " + ficha.id + ": " + posFinal);
+
+                if (posFinal >= numero_casillas - 1) {
+                    posFinal -= numero_casillas;
+                }
+                // if(posFinal >= numero_casillas-1){
+                //     posFinal = numero_casillas -1
+                //     victoria = true;
+                // }
+
+                const rectIni = getCasillaEnPos(posActual).getBoundingClientRect();
+                const coordenadaXIni = rectIni.left + window.scrollX;
+                const coordenadaYIni = rectIni.top + window.scrollY;
+                console.log("coordenadaXInicio: " + coordenadaXIni + ", coordenadaYInicio: " + coordenadaYIni)
+
+                const rectFinal = getCasillaEnPos(posFinal).getBoundingClientRect();
+                const coordenadaXFin = rectFinal.left + window.scrollX;
+                const coordenadaYFin = rectFinal.top + window.scrollY;
+                console.log("coordenadaXFinal: " + coordenadaXFin + ", coordenadaYFinal: " + coordenadaYFin)
+
+                // Crea una nueva animación solo para la ficha
+                const animation = ficha.animate(
+                    [
+                        { transform: 'translate(0, 0) rotate(0deg)' }, // Estado inicial: sin traslación y rotación
+                        { transform: `translate(${coordenadaXFin - coordenadaXIni}px, ${coordenadaYFin - coordenadaYIni}px) rotate(720deg)` } // Estado final: traslación y rotación
+                    ],
+                    {
+                        duration: 2000,
+                        easing: "ease"
+                    }
+                );
+
+
+                animation.onfinish = () => {
+                    //ficha.style.left = ficha_left+ "px";
+                    //ficha.style.bottom = ficha_bottom+"px"
+                    // tablero.children[posActual].removeChild(ficha);
+                    // tablero.children[posFinal].appendChild(ficha);
+                    casillaIni = document.getElementById(posActual + "")
+                    casillaFin = document.getElementById(posFinal + "")
+
+                    casillaIni.getElementsByClassName("fila2")[0].removeChild(ficha)
+                    casillaFin.getElementsByClassName("fila2")[0].appendChild(ficha)
+
+                    if (victoria === true) {
+                        alert("VICTORIA")
+                    }
+                };
             }
+
         }
 
-        return null;
+        function numCasillaFicha(ficha) {
+            console.log(ficha.parentNode.parentNode)
+            casillas = document.getElementsByClassName("casilla");
+            for (i = 0; i < casillas.length; i++) {
+                if (casillas[i] === ficha.parentNode.parentNode.parentNode) {
+                    return Number(casillas[i].id);
+                }
+            }
+            return -1;
+        }
+        function getCasillaEnPos(pos) {
 
-    }
+            casillas = document.getElementsByClassName("casilla");
+            for (i = 0; i < casillas.length; i++) {
+                if (casillas[i].id == pos) {
+                    return casillas[i];
+                }
+            }
 
-    // function getNumFichasEnCasilla(numCasilla){
-    //     casillas = document.getElementsByClassName("caja");
-        
-    //     return casillas[numCasilla].getElementsByClassName("ficha").length
-    // }
+            return null;
+
+        }
+
+        // function getNumFichasEnCasilla(numCasilla){
+        //     casillas = document.getElementsByClassName("caja");
+
+        //     return casillas[numCasilla].getElementsByClassName("ficha").length
+        // }
 
 
 
-    function girarDado(e){
-        if(victoria === false){
-            dado = e.currentTarget;
-        
-            numeroAleatorio = Math.floor(Math.random() * 6) + 1;
+        function girarDado(e) {
+            if (victoria === false) {
+                dado = e.currentTarget;
 
-            const animation = dado.animate(
-                [
-                    { transform: 'rotateX(0deg) rotateY(0deg) rotateZ(0deg)' },
-                    { transform: 'rotateX(360deg) rotateY(360deg) rotateZ(360deg)' }
-                ],
+                numeroAleatorio = Math.floor(Math.random() * 6) + 1;
+
+                const animation = dado.animate(
+                    [
+                        { transform: 'rotateX(0deg) rotateY(0deg) rotateZ(0deg)' },
+                        { transform: 'rotateX(360deg) rotateY(360deg) rotateZ(360deg)' }
+                    ],
                     {
                         duration: 1500,
                         easing: "ease"
                     }
-            );
+                );
 
-            animation.onfinish = () => {
-                
-                dado.src="dado"+numeroAleatorio+".png"
+                animation.onfinish = () => {
 
-                fichaAMover = document.getElementById("ficha"+(turno%2+1))
-                
-                moverNCasillas(fichaAMover, numeroAleatorio)
-                turno++;
-                //textoTurno.textContent = "Turno de la ficha "+((turno%4+1))
+                    dado.src = "dado" + numeroAleatorio + ".png"
 
-            };
+                    fichaAMover = document.getElementById("ficha" + (turno % 2 + 1))
+
+                    moverNCasillas(fichaAMover, numeroAleatorio)
+                    turno++;
+                    //textoTurno.textContent = "Turno de la ficha "+((turno%4+1))
+
+                };
+
+            }
 
         }
-        
-    }
     </script>
 
-    
+
 </body>
 
 </html>
