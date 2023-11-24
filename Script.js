@@ -38,3 +38,38 @@ function drop(ev) {
 
     
 }
+
+
+
+function dragable(casilla)  {
+    alert("Esta es la posicion de la casilla " + casilla);
+
+    var elementoPrincipal = document.getElementById(casilla);
+
+    for (var propiedad in elementoPrincipal) {
+        if (elementoPrincipal.hasOwnProperty(propiedad)) {
+            console.log(propiedad + ": " + elementoPrincipal[propiedad]);
+        }
+    }
+
+    var img = elementoPrincipal.querySelector(".fila2 img");
+
+    img.setAttribute("draggable", "true");
+}
+
+function nodragable(casilla)  {
+    alert("Sales de la casilla " + casilla);
+
+    var elementoPrincipal = document.getElementById(casilla);
+
+    for (var propiedad in elementoPrincipal) {
+        if (elementoPrincipal.hasOwnProperty(propiedad)) {
+            console.log(propiedad + ": " + elementoPrincipal[propiedad]);
+        }
+    }
+
+    var img = elementoPrincipal.querySelector(".fila2 img");
+
+    img.setAttribute("draggable", "false");
+}
+
