@@ -211,7 +211,7 @@
     <div class="container">
     <div class="ui">
 
-        <div class="nomJug">
+        <div class="nomJug" id="jug1">
             <p style="text-align: center;">JUGADOR 1</p>
         </div>
 
@@ -224,7 +224,7 @@
             </div>
         </div>
 
-        <div class="nomJug">
+        <div class="nomJug" id="jug2">
             <p style="text-align: center;">JUGADOR 2</p>
         </div>
 
@@ -713,6 +713,8 @@
 
     <script>
         const NUM_JUGADORES = 2;
+        var dineroJ1 = 3000;
+        var dineroJ2 = 3100;
 
         for (i = 0; i < NUM_JUGADORES; i++) {
             ficha = document.createElement('div');
@@ -723,6 +725,20 @@
             espFichas = casillaInicio.getElementsByClassName('fila3')[0]
             espFichas.appendChild(ficha);
         }
+
+        //ASIGNAR DINERO
+        divDinero1 = document.createElement("p");
+        divDinero1.textContent = dineroJ1+"";
+        div1 = document.getElementById("jug1")
+        div1.appendChild(divDinero1);
+
+        divDinero2 = document.createElement("p");
+        divDinero2.textContent = dineroJ2+"";
+        div2 = document.getElementById("jug2")
+        div2.appendChild(divDinero2);
+
+        listaCasillas1 = [];
+        listaCasillas2 = [];
 
         //CRONO GENERAL
         document.addEventListener("DOMContentLoaded", function () {
@@ -833,10 +849,48 @@
 
                     if (victoria === true) {
                         alert("VICTORIA")
+                    }else{
+                        analizarCasilla(ficha, casillaFin)
                     }
                 };
             }
 
+        }
+
+        function analizarCasilla(ficha, casilla){
+            if(listaCasillas1.includes(casilla) && ficha === f1){
+                
+                console.log("F1 cae en casilla de f1")
+            }else if(listaCasillas2.includes(casilla) && ficha === f2){
+                console.log("F2 cae en casilla de f2")
+            }else if(listaCasillas1.includes(casilla) && ficha === f2){
+                console.log("F2 cae en casilla de f1")
+            }else if(listaCasillas2.includes(casilla) && ficha === f1){
+                console.log("F1 cae en casilla de f2")
+            }else{
+                console.log("casilla no es de nadie");
+                if(confirm("¿Quieres comprar la calle?") == true){
+                    if(ficha === f1){
+                        if(Number(divDinero1.textContent)>=800){
+                            listaCasillas1.push(casilla);
+                            divDinero1.textContent = (Number(divDinero1.textContent)-800)+"";
+                        }else{
+                            alert("No tienes dinero suficiente")
+                        }
+                        
+                    }else if(ficha === f2){
+                        if(Number(divDinero1.textContent)>=800){
+                            listaCasillas2.push(casilla);
+                            divDinero2.textContent = (Number(divDinero2.textContent)-800)+"";
+                        }else{
+                            alert("No tienes dinero suficiente")
+                        }
+                    }
+                }
+            }
+
+            console.log("casillas 1: "+listaCasillas1);
+            console.log("casillas 2: "+listaCasillas2);
         }
 
         function deshabilitarDrag(casilla){
