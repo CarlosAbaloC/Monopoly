@@ -42,7 +42,7 @@ function drop(ev) {
 
 
 function dragable(casilla)  {
-    alert("Esta es la posicion de la casilla " + casilla);
+    //alert("Esta es la posicion de la casilla " + casilla);
 
     var elementoPrincipal = document.getElementById(casilla);
 
@@ -58,7 +58,7 @@ function dragable(casilla)  {
 }
 
 function nodragable(casilla)  {
-    alert("Sales de la casilla " + casilla);
+    //alert("Sales de la casilla " + casilla);
 
     var elementoPrincipal = document.getElementById(casilla);
 

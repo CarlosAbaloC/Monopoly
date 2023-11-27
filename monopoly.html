@@ -18,7 +18,7 @@
 
         }
 
-        .container{
+        .container {
             height: 100%;
         }
 
@@ -27,10 +27,10 @@
             display: grid;
             grid-template-columns: 1fr 3fr 1fr;
             grid-template-rows: 1fr 5fr;
-            
+
         }
 
-        
+
 
         .propiedades {
             background-color: cyan;
@@ -43,7 +43,7 @@
             display: grid;
             grid-template-columns: 2fr repeat(6, 2fr) 2fr;
             grid-template-rows: 2fr repeat(6, 2fr) 2fr;
-            
+
             border: 5px solid #000;
             background-color: #f5d76e;
             padding: 10px;
@@ -51,7 +51,7 @@
 
         .casilla {
             height: 95%;
-            background-color: red;
+            background-color: white;
             border: 3px solid black;
             position: relative;
             display: flex;
@@ -69,7 +69,7 @@
         } */
 
         .centro {
-            background-color: orange;
+            background-color: beige;
             grid-area: 2 / 2 / 8 / 8;
             display: flex;
             flex-direction: column;
@@ -79,7 +79,7 @@
         }
 
         .ficha {
-            width: 40%;
+            width: 25%;
             height: 80%;
             text-align: center;
 
@@ -155,13 +155,13 @@
 
 
         .dado img {
-            
+
             width: 100%;
             height: 100%;
         }
 
         .cartadiv {
-            
+            height: 100%;
             border: 1px solid black;
             display: grid;
             /* grid-template-columns: repeat(5, 1fr); */
@@ -169,7 +169,7 @@
             /* box-sizing: border-box; */
         }
 
-        .casas{
+        .casas {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
             grid-template-rows: 1fr;
@@ -198,507 +198,566 @@
             /* Asegura que no haya márgenes predeterminados */
         }
 
-        .calle{
+        .color-rojo {
+            background-color: red;
+        }
+
+        .calle {
             position: relative;
             z-index: 0;
             width: 100%;
         }
 
+        .color-amarillo {
+            background-color: yellow;
+        }
+
+        .color-verde {
+            background-color: green;
+        }
+
+        .color-naranja {
+            background-color: orange;
+        }
+
+        .color-rosa {
+            background-color: pink;
+        }
+
+        .color-marron {
+            background-color: brown;
+        }
+
+        .color-celeste {
+            background-color: lightblue;
+        }
+
+        .color-azul {
+            background-color: blue;
+        }
     </style>
 </head>
 
 <body>
     <div class="container">
-    <div class="ui">
+        <div class="ui">
 
-        <div class="nomJug" id="jug1">
-            <p style="text-align: center;">JUGADOR 1</p>
-        </div>
-
-        <div class="info">
-            <div class="turno">
-                <p>Turno del jugador 1</p>
+            <div class="nomJug" id="jug1">
+                <p style="text-align: center;">JUGADOR 1</p>
             </div>
-            <div class="cronoGeneral">
-                <span id="minutos">01</span>:<span id="segundos">00</span>
-            </div>
-        </div>
 
-        <div class="nomJug" id="jug2">
-            <p style="text-align: center;">JUGADOR 2</p>
-        </div>
-
-        <div class="propiedades" id="jugador1" ondrop="drop(event)" ondragover="allowDrop(event)">
-        </div>
-
-        <div class="tablero">
-            <!-- Casillas de juego -->
-
-            <!-- Primera fila -->
-            <div id="1" class="casilla parking">
-                
-                <div class="cartadiv" id="carta1">
-                    <div></div>
-                    <div class="fila2">
-                        <img src="Calle.png" class = "calle" id = "carta111" alt="" draggable="false" ondragstart="drag(event)">
-                    </div>
-                    <div class="fila3"></div>
+            <div class="info">
+                <div class="turno">
+                    <p>Turno del jugador 1</p>
+                </div>
+                <div class="cronoGeneral">
+                    <span id="minutos">01</span>:<span id="segundos">00</span>
                 </div>
             </div>
 
-            <div id="2" class="casilla color-rojo">
-                <div class="cartadiv" id="carta1">
-                    <div class="casas">
-                        <p>1</p>
-                        <p>1</p>
-                        <p>1</p>
-                        <p>1</p>
-                        <button id="mostrar">&#128269;</button>
-                    </div>
-                    
-                    <div class="fila2">
-                        <img src="Calle.png" class = "calle" id = "carta111" alt="" draggable="false" ondragstart="drag(event)">
-                    </div>
-                    <div class="fila3"></div>
-                </div>
-            </div>
-            <div id="3" class="casilla suerte">
-                <div class="cartadiv" id="carta1">
-                    <div class="casas">
-                        <p>1</p>
-                        <p>1</p>
-                        <p>1</p>
-                        <p>1</p>
-                        <button id="mostrar">&#128269;</button>
-                    </div>
-                    
-                    <div class="fila2">
-                        <img src="Calle.png" class = "calle" id = "carta2" alt="" draggable="false" ondragstart="drag(event)">
-                    </div>
-                    <div class="fila3"></div>
-                </div>
-            </div>
-            <div id="4" class="casilla color-rojo">
-                <div class="cartadiv" id="carta1">
-                    <div class="casas">
-                        <p>1</p>
-                        <p>1</p>
-                        <p>1</p>
-                        <p>1</p>
-                        <button id="mostrar">&#128269;</button>
-                    </div>
-                    
-                    <div class="fila2">
-                        <img src="Calle.png" class = "calle" id = "carta3" alt="" draggable="false" ondragstart="drag(event)">
-                    </div>
-                    <div class="fila3"></div>
-                </div>
-            </div>
-            <div id="5" class="casilla color-amarillo">
-                <div class="cartadiv" id="carta1">
-                    <div class="casas">
-                        <p>1</p>
-                        <p>1</p>
-                        <p>1</p>
-                        <p>1</p>
-                        <button id="mostrar">&#128269;</button>
-                    </div>
-                    
-                    <div class="fila2">
-                        <img src="Calle.png" class = "calle" id = "carta4" alt="" draggable="false" ondragstart="drag(event)">
-                    </div>
-                    <div class="fila3"></div>
-                </div>
-                
-            </div>
-            <div id="6" class="casilla agua">
-
-                <div class="cartadiv" id="carta1">
-                    <div class="casas">
-                        <p>1</p>
-                        <p>1</p>
-                        <p>1</p>
-                        <p>1</p>
-                        <button id="mostrar">&#128269;</button>
-                    </div>
-                    
-                    <div class="fila2">
-                        <img src="Calle.png" class = "calle" id = "carta5" alt="" draggable="false" ondragstart="drag(event)">
-                    </div>
-                    <div class="fila3"></div>
-                </div>
-            </div>
-            <div id="7" class="casilla color-amarillo">
-
-                <div class="cartadiv" id="carta1">
-                    <div class="casas">
-                        <p>1</p>
-                        <p>1</p>
-                        <p>1</p>
-                        <p>1</p>
-                        <button id="mostrar">&#128269;</button>
-                    </div>
-                    
-                    <div class="fila2">
-                        <img src="Calle.png" class = "calle" id = "carta6" alt="" draggable="false" ondragstart="drag(event)">
-
-                    </div>
-                    <div class="fila3"></div>
-                </div>
-            </div>
-            <div id="8" class="casilla policia">
-                <div class="cartadiv" id="carta1">
-                    <div></div>
-                    <div class="fila2">
-                        <img src="Calle.png" class = "calle" id = "carta111" alt="" draggable="false" ondragstart="drag(event)">
-                    </div>
-                    <div class="fila3"></div>
-                </div>
+            <div class="nomJug" id="jug2">
+                <p style="text-align: center;">JUGADOR 2</p>
             </div>
 
-            <div class="centro">
-                MONOPOLY
-                <div class="dado">
-                    
-                    <img src="dado.jpg" alt="">
-                </div>
+            <div class="propiedades" id="jugador1" ondrop="drop(event)" ondragover="allowDrop(event)">
             </div>
 
-            <!-- Laterales -->
-            <div id="28" class="casilla color-naranja">
-                <div class="cartadiv" id="carta1">
-                    <div class="casas">
-                        <p>1</p>
-                        <p>1</p>
-                        <p>1</p>
-                        <p>1</p>
-                        <button id="mostrar">&#128269;</button>
-                    </div>
-                    
-                    <div class="fila2">
-                        <img src="Calle.png" class = "calle" id = "carta7" alt="" draggable="false" ondragstart="drag(event)">
+            <div class="tablero">
+                <!-- Casillas de juego -->
 
+                <!-- Primera fila -->
+                <div id="1" class="casilla parking">
+
+                    <div class="cartadiv" id="carta1">
+                        <div></div>
+                        <div class="fila2">
+                            <img src="Calle.png" class="calle" id="carta111" alt="" draggable="false"
+                                ondragstart="drag(event)">
+                        </div>
+                        <div class="fila3"></div>
                     </div>
-                    <div class="fila3"></div>
                 </div>
+
+                <div id="2" class="casilla color-rojo">
+                    <div class="cartadiv" id="carta1">
+                        <div class="casas">
+                            <p>&nbsp;1</p>
+                            <p>&nbsp;1</p>
+                            <p>&nbsp;&nbsp;</p>
+                            <p>&nbsp;&nbsp;</p>
+                            <button id="mostrar">&#128269;</button>
+                        </div>
+
+                        <div class="fila2">
+                            <img src="Calle.png" class="calle" id="carta111" alt="" draggable="false"
+                                ondragstart="drag(event)">
+                        </div>
+                        <div class="fila3"></div>
+                    </div>
+                </div>
+                <div id="3" class="casilla suerte">
+                    <div class="cartadiv" id="carta1">
+                        <div class="casas">
+                            <p>&nbsp;1</p>
+                            <p>&nbsp;&nbsp;</p>
+                            <p>&nbsp;&nbsp;</p>
+                            <p>&nbsp;&nbsp;</p>
+                            <button id="mostrar">&#128269;</button>
+                        </div>
+
+                        <div class="fila2">
+                            <img src="Calle.png" class="calle" id="carta2" alt="" draggable="false"
+                                ondragstart="drag(event)">
+                        </div>
+                        <div class="fila3"></div>
+                    </div>
+                </div>
+                <div id="4" class="casilla color-rojo">
+                    <div class="cartadiv" id="carta1">
+                        <div class="casas">
+                            <p>&nbsp;&nbsp;</p>
+                            <p>&nbsp;&nbsp;</p>
+                            <p>&nbsp;&nbsp;</p>
+                            <p>&nbsp;&nbsp;</p>
+                            <button id="mostrar">&#128269;</button>
+                        </div>
+
+                        <div class="fila2">
+                            <img src="Calle.png" class="calle" id="carta3" alt="" draggable="false"
+                                ondragstart="drag(event)">
+                        </div>
+                        <div class="fila3"></div>
+                    </div>
+                </div>
+                <div id="5" class="casilla color-amarillo">
+                    <div class="cartadiv" id="carta1">
+                        <div class="casas">
+                            <p>&nbsp;&nbsp;</p>
+                            <p>&nbsp;&nbsp;</p>
+                            <p>&nbsp;&nbsp;</p>
+                            <p>&nbsp;&nbsp;</p>
+                            <button id="mostrar">&#128269;</button>
+                        </div>
+
+                        <div class="fila2">
+                            <img src="Calle.png" class="calle" id="carta4" alt="" draggable="false"
+                                ondragstart="drag(event)">
+                        </div>
+                        <div class="fila3"></div>
+                    </div>
+
+                </div>
+                <div id="6" class="casilla agua">
+
+                    <div class="cartadiv" id="carta1">
+                        <div class="casas">
+                            <p>&nbsp;1</p>
+                            <p>&nbsp;&nbsp;</p>
+                            <p>&nbsp;&nbsp;</p>
+                            <p>&nbsp;&nbsp;</p>
+                            <button id="mostrar">&#128269;</button>
+                        </div>
+
+                        <div class="fila2">
+                            <img src="Calle.png" class="calle" id="carta5" alt="" draggable="false"
+                                ondragstart="drag(event)">
+                        </div>
+                        <div class="fila3"></div>
+                    </div>
+                </div>
+                <div id="7" class="casilla color-amarillo">
+
+                    <div class="cartadiv" id="carta1">
+                        <div class="casas">
+                            <p>&nbsp;1</p>
+                            <p>&nbsp;1</p>
+                            <p>&nbsp;1</p>
+                            <p>&nbsp;&nbsp;</p>
+                            <button id="mostrar">&#128269;</button>
+                        </div>
+
+                        <div class="fila2">
+                            <img src="Calle.png" class="calle" id="carta6" alt="" draggable="false"
+                                ondragstart="drag(event)">
+
+                        </div>
+                        <div class="fila3"></div>
+                    </div>
+                </div>
+                <div id="8" class="casilla policia">
+                    <div class="cartadiv" id="carta1">
+                        <div></div>
+                        <div class="fila2">
+                            <img src="Calle.png" class="calle" id="carta111" alt="" draggable="false"
+                                ondragstart="drag(event)">
+                        </div>
+                        <div class="fila3"></div>
+                    </div>
+                </div>
+
+                <div class="centro">
+                    MONOPOLY
+                    <div class="dado">
+
+                        <img src="dado.jpg" alt="">
+                    </div>
+                </div>
+
+                <!-- Laterales -->
+                <div id="28" class="casilla color-naranja">
+                    <div class="cartadiv" id="carta1">
+                        <div class="casas">
+                            <p>&nbsp;&nbsp;</p>
+                            <p>&nbsp;&nbsp;</p>
+                            <p>&nbsp;&nbsp;</p>
+                            <p>&nbsp;&nbsp;</p>
+                            <button id="mostrar">&#128269;</button>
+                        </div>
+
+                        <div class="fila2">
+                            <img src="Calle.png" class="calle" id="carta7" alt="" draggable="false"
+                                ondragstart="drag(event)">
+
+                        </div>
+                        <div class="fila3"></div>
+                    </div>
+                </div>
+
+                <div id="9" class="casilla color-verde">
+                    <div class="cartadiv" id="carta1">
+                        <div class="casas">
+                            <p>&nbsp;&nbsp;</p>
+                            <p>&nbsp;&nbsp;</p>
+                            <p>&nbsp;&nbsp;</p>
+                            <p>&nbsp;&nbsp;</p>
+                            <button id="mostrar">&#128269;</button>
+                        </div>
+
+                        <div class="fila2">
+                            <img src="Calle.png" class="calle" id="carta8" alt="" draggable="false"
+                                ondragstart="drag(event)">
+
+                        </div>
+                        <div class="fila3"></div>
+                    </div>
+                </div>
+                <div id="27" class="casilla comunidad">
+                    <div class="cartadiv" id="carta1">
+                        <div class="casas">
+                            <p>&nbsp;&nbsp;</p>
+                            <p>&nbsp;&nbsp;</p>
+                            <p>&nbsp;&nbsp;</p>
+                            <p>&nbsp;&nbsp;</p>
+                            <button id="mostrar">&#128269;</button>
+                        </div>
+
+                        <div class="fila2">
+                            <img src="Calle.png" class="calle" id="carta9" alt="" draggable="false"
+                                ondragstart="drag(event)">
+
+                        </div>
+                        <div class="fila3"></div>
+                    </div>
+                </div>
+                <div id="10" class="casilla comunidad">
+                    <div class="cartadiv" id="carta1">
+                        <div class="casas">
+                            <p>&nbsp;&nbsp;</p>
+                            <p>&nbsp;&nbsp;</p>
+                            <p>&nbsp;&nbsp;</p>
+                            <p>&nbsp;&nbsp;</p>
+                            <button id="mostrar">&#128269;</button>
+                        </div>
+
+                        <div class="fila2">
+                            <img src="Calle.png" class="calle" id="carta10" alt="" draggable="false"
+                                ondragstart="drag(event)">
+
+                        </div>
+                        <div class="fila3"></div>
+                    </div>
+                </div>
+                <div id="26" class="casilla color-naranja">
+                    <div class="cartadiv" id="carta1">
+                        <div class="casas">
+                            <p>&nbsp;&nbsp;</p>
+                            <p>&nbsp;&nbsp;</p>
+                            <p>&nbsp;&nbsp;</p>
+                            <p>&nbsp;&nbsp;</p>
+                            <button id="mostrar">&#128269;</button>
+                        </div>
+
+                        <div class="fila2">
+                            <img src="Calle.png" class="calle" id="carta11" alt="" draggable="false"
+                                ondragstart="drag(event)">
+
+                        </div>
+                        <div class="fila3"></div>
+                    </div>
+                </div>
+                <div id="11" class="casilla color-verde">
+                    <div class="cartadiv" id="carta1">
+                        <div class="casas">
+                            <p>&nbsp;&nbsp;</p>
+                            <p>&nbsp;&nbsp;</p>
+                            <p>&nbsp;&nbsp;</p>
+                            <p>&nbsp;&nbsp;</p>
+                            <button id="mostrar">&#128269;</button>
+                        </div>
+
+                        <div class="fila2">
+                            <img src="Calle.png" class="calle" id="carta12" alt="" draggable="false"
+                                ondragstart="drag(event)">
+
+                        </div>
+                        <div class="fila3"></div>
+                    </div>
+                </div>
+                <div id="25" class="casilla color-rosa">
+                    <div class="cartadiv" id="carta1">
+                        <div class="casas">
+                            <p>&nbsp;&nbsp;</p>
+                            <p>&nbsp;&nbsp;</p>
+                            <p>&nbsp;&nbsp;</p>
+                            <p>&nbsp;&nbsp;</p>
+                            <button id="mostrar">&#128269;</button>
+                        </div>
+
+                        <div class="fila2">
+                            <img src="Calle.png" class="calle" id="carta13" alt="" draggable="false"
+                                ondragstart="drag(event)">
+
+                        </div>
+                        <div class="fila3"></div>
+                    </div>
+                </div>
+                <div id="12" class="casilla color-azul">
+                    <div class="cartadiv" id="carta1">
+                        <div class="casas">
+                            <p>&nbsp;&nbsp;</p>
+                            <p>&nbsp;&nbsp;</p>
+                            <p>&nbsp;&nbsp;</p>
+                            <p>&nbsp;&nbsp;</p>
+                            <button id="mostrar">&#128269;</button>
+                        </div>
+
+                        <div class="fila2">
+                            <img src="Calle.png" class="calle" id="carta14" alt="" draggable="false"
+                                ondragstart="drag(event)">
+
+                        </div>
+                        <div class="fila3"></div>
+                    </div>
+                </div>
+                <div id="24" class="casilla luz">
+                    <div class="cartadiv" id="carta1">
+                        <div class="casas">
+                            <p>&nbsp;&nbsp;</p>
+                            <p>&nbsp;&nbsp;</p>
+                            <p>&nbsp;&nbsp;</p>
+                            <p>&nbsp;&nbsp;</p>
+                            <button id="mostrar">&#128269;</button>
+                        </div>
+
+                        <div class="fila2">
+                            <img src="Calle.png" class="calle" id="carta23" alt="" draggable="false"
+                                ondragstart="drag(event)">
+
+                        </div>
+                        <div class="fila3"></div>
+                    </div>
+                </div>
+                <div id="13" class="casilla lujo">
+                    <div class="cartadiv" id="carta1">
+                        <div class="casas">
+                            <p>&nbsp;&nbsp;</p>
+                            <p>&nbsp;&nbsp;</p>
+                            <p>&nbsp;&nbsp;</p>
+                            <p>&nbsp;&nbsp;</p>
+                            <button id="mostrar">&#128269;</button>
+                        </div>
+
+                        <div class="fila2">
+                            <img src="Calle.png" class="calle" id="carta15" alt="" draggable="false"
+                                ondragstart="drag(event)">
+
+                        </div>
+                        <div class="fila3"></div>
+                    </div>
+                </div>
+                <div id="23" class="casilla color-rosa">
+                    <div class="cartadiv" id="carta1">
+                        <div class="casas">
+                            <p>&nbsp;&nbsp;</p>
+                            <p>&nbsp;&nbsp;</p>
+                            <p>&nbsp;&nbsp;</p>
+                            <p>&nbsp;&nbsp;</p>
+                            <button id="mostrar">&#128269;</button>
+                        </div>
+
+                        <div class="fila2">
+                            <img src="Calle.png" class="calle" id="carta16" alt="" draggable="false"
+                                ondragstart="drag(event)">
+
+                        </div>
+                        <div class="fila3"></div>
+                    </div>
+                </div>
+                <div id="14" class="casilla color-azul">
+                    <div class="cartadiv" id="carta1">
+                        <div class="casas">
+                            <p>&nbsp;&nbsp;</p>
+                            <p>&nbsp;&nbsp;</p>
+                            <p>&nbsp;&nbsp;</p>
+                            <p>&nbsp;&nbsp;</p>
+                            <button id="mostrar">&#128269;</button>
+                        </div>
+
+                        <div class="fila2">
+                            <img src="Calle.png" class="calle" id="carta17" alt="" draggable="false"
+                                ondragstart="drag(event)">
+
+                        </div>
+                        <div class="fila3"></div>
+                    </div>
+                </div>
+
+                <!-- Ultima fila -->
+                <div id="22" class="casilla carcel">
+                    <div class="cartadiv" id="carta1">
+                        <div></div>
+                        <div class="fila2">
+                            <img src="Calle.png" class="calle" id="carta111" alt="" draggable="false"
+                                ondragstart="drag(event)">
+                        </div>
+                        <div class="fila3"></div>
+                    </div>
+                </div>
+                <div id="21" class="casilla color-celeste">
+                    <div class="cartadiv" id="carta1">
+                        <div class="casas">
+                            <p>&nbsp;&nbsp;</p>
+                            <p>&nbsp;&nbsp;</p>
+                            <p>&nbsp;&nbsp;</p>
+                            <p>&nbsp;&nbsp;</p>
+                            <button id="mostrar">&#128269;</button>
+                        </div>
+
+                        <div class="fila2">
+                            <img src="Calle.png" class="calle" id="carta18" alt="" draggable="false"
+                                ondragstart="drag(event)">
+
+                        </div>
+                        <div class="fila3"></div>
+                    </div>
+                </div>
+                <div id="20" class="casilla suerte">
+                    <div class="cartadiv" id="carta1">
+                        <div class="casas">
+                            <p>&nbsp;&nbsp;</p>
+                            <p>&nbsp;&nbsp;</p>
+                            <p>&nbsp;&nbsp;</p>
+                            <p>&nbsp;&nbsp;</p>
+                            <button id="mostrar">&#128269;</button>
+                        </div>
+
+                        <div class="fila2">
+                            <img src="Calle.png" class="calle" id="carta19" alt="" draggable="false"
+                                ondragstart="drag(event)">
+
+                        </div>
+                        <div class="fila3"></div>
+                    </div>
+                </div>
+                <div id="19" class="casilla color-celeste">
+                    <div class="cartadiv" id="carta1">
+                        <div class="casas">
+                            <p>&nbsp;&nbsp;</p>
+                            <p>&nbsp;&nbsp;</p>
+                            <p>&nbsp;&nbsp;</p>
+                            <p>&nbsp;&nbsp;</p>
+                            <button id="mostrar">&#128269;</button>
+                        </div>
+
+                        <div class="fila2">
+                            <img src="Calle.png" class="calle" id="carta20" alt="" draggable="false"
+                                ondragstart="drag(event)">
+
+                        </div>
+                        <div class="fila3"></div>
+                    </div>
+                </div>
+                <div id="18" class="casilla color-marron">
+                    <div class="cartadiv" id="carta1">
+                        <div class="casas">
+                            <p>&nbsp;&nbsp;</p>
+                            <p>&nbsp;&nbsp;</p>
+                            <p>&nbsp;&nbsp;</p>
+                            <p>&nbsp;&nbsp;</p>
+                            <button id="mostrar">&#128269;</button>
+                        </div>
+
+                        <div class="fila2">
+                            <img src="Calle.png" class="calle" id="carta21" alt="" draggable="false"
+                                ondragstart="drag(event)">
+
+                        </div>
+                        <div class="fila3"></div>
+                    </div>
+                </div>
+                <div id="17" class="casilla comunidad">
+                    <div class="cartadiv" id="carta1">
+                        <div class="casas">
+                            <p>&nbsp;&nbsp;</p>
+                            <p>&nbsp;&nbsp;</p>
+                            <p>&nbsp;&nbsp;</p>
+                            <p>&nbsp;&nbsp;</p>
+                            <button id="mostrar">&#128269;</button>
+                        </div>
+
+                        <div class="fila2">
+                            <img src="Calle.png" class="calle" id="carta22" alt="" draggable="false"
+                                ondragstart="drag(event)">
+
+                        </div>
+                        <div class="fila3"></div>
+                    </div>
+                </div>
+                <div id="16" class="casilla color-marron">
+                    <div class="cartadiv" id="carta1">
+                        <div class="casas">
+                            <p>&nbsp;&nbsp;</p>
+                            <p>&nbsp;&nbsp;</p>
+                            <p>&nbsp;&nbsp;</p>
+                            <p>&nbsp;&nbsp;</p>
+                            <button id="mostrar">&#128269;</button>
+                        </div>
+
+                        <div class="fila2">
+                            <img src="Calle.png" class="calle" id="carta23" alt="" draggable="false"
+                                ondragstart="drag(event)">
+
+                        </div>
+                        <div class="fila3"></div>
+                    </div>
+                </div>
+                <div id="15" class="casilla salida">
+                    <div class="cartadiv" id="carta1">
+                        <div></div>
+                        <div class="fila2">
+                            <img src="Calle.png" class="calle" id="carta111" alt="" draggable="false"
+                                ondragstart="drag(event)">
+                        </div>
+                        <div class="fila3"></div>
+                    </div>
+                </div>
+
             </div>
 
-            <div id="9" class="casilla color-verde">
-                <div class="cartadiv" id="carta1">
-                    <div class="casas">
-                        <p>1</p>
-                        <p>1</p>
-                        <p>1</p>
-                        <p>1</p>
-                        <button id="mostrar">&#128269;</button>
-                    </div>
-                    
-                    <div class="fila2">
-                        <img src="Calle.png" class = "calle" id = "carta8" alt="" draggable="false" ondragstart="drag(event)">
-
-                    </div>
-                    <div class="fila3"></div>
-                </div>
-            </div>
-            <div id="27" class="casilla comunidad">
-                <div class="cartadiv" id="carta1">
-                    <div class="casas">
-                        <p>1</p>
-                        <p>1</p>
-                        <p>1</p>
-                        <p>1</p>
-                        <button id="mostrar">&#128269;</button>
-                    </div>
-                    
-                    <div class="fila2">
-                        <img src="Calle.png" class = "calle" id = "carta9" alt="" draggable="false" ondragstart="drag(event)">
-
-                    </div>
-                    <div class="fila3"></div>
-                </div>
-            </div>
-            <div id="10" class="casilla comunidad">
-                <div class="cartadiv" id="carta1">
-                    <div class="casas">
-                        <p>1</p>
-                        <p>1</p>
-                        <p>1</p>
-                        <p>1</p>
-                        <button id="mostrar">&#128269;</button>
-                    </div>
-                    
-                    <div class="fila2">
-                        <img src="Calle.png" class = "calle" id = "carta10" alt="" draggable="false" ondragstart="drag(event)">
-
-                    </div>
-                    <div class="fila3"></div>
-                </div>
-            </div>
-            <div id="26" class="casilla color-naranja">
-                <div class="cartadiv" id="carta1">
-                    <div class="casas">
-                        <p>1</p>
-                        <p>1</p>
-                        <p>1</p>
-                        <p>1</p>
-                        <button id="mostrar">&#128269;</button>
-                    </div>
-                    
-                    <div class="fila2">
-                        <img src="Calle.png" class = "calle" id = "carta11" alt="" draggable="false" ondragstart="drag(event)">
-
-                    </div>
-                    <div class="fila3"></div>
-                </div>
-            </div>
-            <div id="11" class="casilla color-verde">
-                <div class="cartadiv" id="carta1">
-                    <div class="casas">
-                        <p>1</p>
-                        <p>1</p>
-                        <p>1</p>
-                        <p>1</p>
-                        <button id="mostrar">&#128269;</button>
-                    </div>
-                    
-                    <div class="fila2">
-                        <img src="Calle.png" class = "calle" id = "carta12" alt="" draggable="false" ondragstart="drag(event)">
-
-                    </div>
-                    <div class="fila3"></div>
-                </div>
-            </div>
-            <div id="25" class="casilla color-rosa">
-                <div class="cartadiv" id="carta1">
-                    <div class="casas">
-                        <p>1</p>
-                        <p>1</p>
-                        <p>1</p>
-                        <p>1</p>
-                        <button id="mostrar">&#128269;</button>
-                    </div>
-                    
-                    <div class="fila2">
-                        <img src="Calle.png" class = "calle" id = "carta13" alt="" draggable="false" ondragstart="drag(event)">
-
-                    </div>
-                    <div class="fila3"></div>
-                </div>
-            </div>
-            <div id="12" class="casilla suerte">
-                <div class="cartadiv" id="carta1">
-                    <div class="casas">
-                        <p>1</p>
-                        <p>1</p>
-                        <p>1</p>
-                        <p>1</p>
-                        <button id="mostrar">&#128269;</button>
-                    </div>
-                    
-                    <div class="fila2">
-                        <img src="Calle.png" class = "calle" id = "carta14" alt="" draggable="false" ondragstart="drag(event)">
-
-                    </div>
-                    <div class="fila3"></div>
-                </div>
-            </div>
-            <div id="24" class="casilla luz">
-                <div class="cartadiv" id="carta1">
-                    <div class="casas">
-                        <p>1</p>
-                        <p>1</p>
-                        <p>1</p>
-                        <p>1</p>
-                        <button id="mostrar">&#128269;</button>
-                    </div>
-                    
-                    <div class="fila2">
-                        <img src="Calle.png" class = "calle" id = "carta23" alt="" draggable="false" ondragstart="drag(event)">
-
-                    </div>
-                    <div class="fila3"></div>
-                </div>
-            </div>
-            <div id="13" class="casilla lujo">
-                <div class="cartadiv" id="carta1">
-                    <div class="casas">
-                        <p>1</p>
-                        <p>1</p>
-                        <p>1</p>
-                        <p>1</p>
-                        <button id="mostrar">&#128269;</button>
-                    </div>
-                    
-                    <div class="fila2">
-                        <img src="Calle.png" class = "calle" id = "carta15" alt="" draggable="false" ondragstart="drag(event)">
-
-                    </div>
-                    <div class="fila3"></div>
-                </div>
-            </div>
-            <div id="23" class="casilla color-rosa">
-                <div class="cartadiv" id="carta1">
-                    <div class="casas">
-                        <p>1</p>
-                        <p>1</p>
-                        <p>1</p>
-                        <p>1</p>
-                        <button id="mostrar">&#128269;</button>
-                    </div>
-                    
-                    <div class="fila2">
-                        <img src="Calle.png" class = "calle" id = "carta16" alt="" draggable="false" ondragstart="drag(event)">
-
-                    </div>
-                    <div class="fila3"></div>
-                </div>
-            </div>
-            <div id="14" class="casilla color-azul">
-                <div class="cartadiv" id="carta1">
-                    <div class="casas">
-                        <p>1</p>
-                        <p>1</p>
-                        <p>1</p>
-                        <p>1</p>
-                        <button id="mostrar">&#128269;</button>
-                    </div>
-                    
-                    <div class="fila2">
-                        <img src="Calle.png" class = "calle" id = "carta17" alt="" draggable="false" ondragstart="drag(event)">
-
-                    </div>
-                    <div class="fila3"></div>
-                </div>
+            <div class="propiedades" id="jugador2" ondrop="drop(event)" ondragover="allowDrop(event)">
             </div>
 
-            <!-- Ultima fila -->
-            <div id="22" class="casilla carcel">
-                <div class="cartadiv" id="carta1">
-                    <div></div>
-                    <div class="fila2">
-                        <img src="Calle.png" class = "calle" id = "carta111" alt="" draggable="false" ondragstart="drag(event)">
-                    </div>
-                    <div class="fila3"></div>
-                </div>
-            </div>
-            <div id="21" class="casilla color-celeste">
-                <div class="cartadiv" id="carta1">
-                    <div class="casas">
-                        <p>1</p>
-                        <p>1</p>
-                        <p>1</p>
-                        <p>1</p>
-                        <button id="mostrar">&#128269;</button>
-                    </div>
-                    
-                    <div class="fila2">
-                        <img src="Calle.png" class = "calle" id = "carta18" alt="" draggable="false" ondragstart="drag(event)">
-
-                    </div>
-                    <div class="fila3"></div>
-                </div>
-            </div>
-            <div id="20" class="casilla suerte">
-                <div class="cartadiv" id="carta1">
-                    <div class="casas">
-                        <p>1</p>
-                        <p>1</p>
-                        <p>1</p>
-                        <p>1</p>
-                        <button id="mostrar">&#128269;</button>
-                    </div>
-                    
-                    <div class="fila2">
-                        <img src="Calle.png" class = "calle" id = "carta19" alt="" draggable="false" ondragstart="drag(event)">
-
-                    </div>
-                    <div class="fila3"></div>
-                </div>
-            </div>
-            <div id="19" class="casilla color-celeste">
-                <div class="cartadiv" id="carta1">
-                    <div class="casas">
-                        <p>1</p>
-                        <p>1</p>
-                        <p>1</p>
-                        <p>1</p>
-                        <button id="mostrar">&#128269;</button>
-                    </div>
-                    
-                    <div class="fila2">
-                        <img src="Calle.png" class = "calle" id = "carta20" alt="" draggable="false" ondragstart="drag(event)">
-
-                    </div>
-                    <div class="fila3"></div>
-                </div>
-            </div>
-            <div id="18" class="casilla color-marron">
-                <div class="cartadiv" id="carta1">
-                    <div class="casas">
-                        <p>1</p>
-                        <p>1</p>
-                        <p>1</p>
-                        <p>1</p>
-                        <button id="mostrar">&#128269;</button>
-                    </div>
-                    
-                    <div class="fila2">
-                        <img src="Calle.png" class = "calle" id = "carta21" alt="" draggable="false" ondragstart="drag(event)">
-
-                    </div>
-                    <div class="fila3"></div>
-                </div>
-            </div>
-            <div id="17" class="casilla comunidad">
-                <div class="cartadiv" id="carta1">
-                    <div class="casas">
-                        <p>1</p>
-                        <p>1</p>
-                        <p>1</p>
-                        <p>1</p>
-                        <button id="mostrar">&#128269;</button>
-                    </div>
-                    
-                    <div class="fila2">
-                        <img src="Calle.png" class = "calle" id = "carta22" alt="" draggable="false" ondragstart="drag(event)">
-
-                    </div>
-                    <div class="fila3"></div>
-                </div>
-            </div>
-            <div id="16" class="casilla color-marron">
-                <div class="cartadiv" id="carta1">
-                    <div class="casas">
-                        <p>1</p>
-                        <p>1</p>
-                        <p>1</p>
-                        <p>1</p>
-                        <button id="mostrar">&#128269;</button>
-                    </div>
-                    
-                    <div class="fila2">
-                        <img src="Calle.png" class = "calle" id = "carta23" alt="" draggable="false" ondragstart="drag(event)">
-
-                    </div>
-                    <div class="fila3"></div>
-                </div>
-            </div>
-            <div id="15" class="casilla salida">
-                <div class="cartadiv" id="carta1">
-                    <div></div>
-                    <div class="fila2">
-                        <img src="Calle.png" class = "calle" id = "carta111" alt="" draggable="false" ondragstart="drag(event)">
-                    </div>
-                    <div class="fila3"></div>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="propiedades" id="jugador2" ondrop="drop(event)" ondragover="allowDrop(event)">
-        </div>
-
-        <!-- <div class="cronoJ1">
+            <!-- <div class="cronoJ1">
             <p style="text-align: center;">CRONOMETRO</p>
         </div>
         
@@ -708,13 +767,13 @@
         </div> -->
 
 
-    </div>
+        </div>
     </div>
 
     <script>
         const NUM_JUGADORES = 2;
-        var dineroJ1 = 3000;
-        var dineroJ2 = 3100;
+        var dineroJ1 = 30000;
+        var dineroJ2 = 30000;
 
         for (i = 0; i < NUM_JUGADORES; i++) {
             ficha = document.createElement('div');
@@ -728,12 +787,12 @@
 
         //ASIGNAR DINERO
         divDinero1 = document.createElement("p");
-        divDinero1.textContent = dineroJ1+"";
+        divDinero1.textContent = dineroJ1 + "";
         div1 = document.getElementById("jug1")
         div1.appendChild(divDinero1);
 
         divDinero2 = document.createElement("p");
-        divDinero2.textContent = dineroJ2+"";
+        divDinero2.textContent = dineroJ2 + "";
         div2 = document.getElementById("jug2")
         div2.appendChild(divDinero2);
 
@@ -802,12 +861,13 @@
 
                 posFinal = posActual + despl;
                 console.log("Posicion final ficha " + ficha.id + ": " + posFinal);
-                dragable(posFinal);
+
 
 
                 if (posFinal > numero_casillas) {
                     posFinal -= numero_casillas;
                 }
+                dragable(posFinal);
                 // if(posFinal >= numero_casillas-1){
                 //     posFinal = numero_casillas -1
                 //     victoria = true;
@@ -849,7 +909,7 @@
 
                     if (victoria === true) {
                         alert("VICTORIA")
-                    }else{
+                    } else {
                         analizarCasilla(ficha, casillaFin)
                     }
                 };
@@ -857,47 +917,147 @@
 
         }
 
-        function analizarCasilla(ficha, casilla){
-            if(listaCasillas1.includes(casilla) && ficha === f1){
-                
+        function analizarCasilla(ficha, casilla) {
+            if ((listaCasillas1.includes(casilla) && ficha === f1) || (listaCasillas2.includes(casilla) && ficha === f2)) {
                 console.log("F1 cae en casilla de f1")
-            }else if(listaCasillas2.includes(casilla) && ficha === f2){
-                console.log("F2 cae en casilla de f2")
-            }else if(listaCasillas1.includes(casilla) && ficha === f2){
+
+                //sacar color de casilla
+                let color = casilla.classList[1];
+                console.log(color);
+
+                //comprobar si se tienen las 2 casillas de ese color
+                let numeroCasillasColor = numCasillasColor(ficha, color);
+
+                if (numeroCasillasColor == 2) {
+                    if (confirm("¿Quieres comprar una casa?") == true) {
+
+                        //comprobar numero de casas
+                        let c = numCasasCasilla(casilla);
+
+                        if (c <= 4) {
+                            casilla.getElementsByClassName("casas")[0].children[c].innerHTML = "&nbsp;1";
+
+                            if (ficha === f1) {
+                                if (Number(divDinero1.textContent) >= 300) {
+                                    divDinero1.textContent = (Number(divDinero1.textContent) - 300) + "";
+                                } else {
+                                    alert("No tienes dinero suficiente")
+                                }
+
+                            } else if (ficha === f2) {
+                                if (Number(divDinero2.textContent) >= 300) {
+                                    divDinero2.textContent = (Number(divDinero2.textContent) - 300) + "";
+                                } else {
+                                    alert("No tienes dinero suficiente")
+                                }
+                            }
+                        }else{ //HOTELES
+                            alert("No puedes comprar más casas");
+                        }
+                    }
+                }
+
+
+            } else if (listaCasillas1.includes(casilla) && ficha === f2) {
                 console.log("F2 cae en casilla de f1")
-            }else if(listaCasillas2.includes(casilla) && ficha === f1){
+
+                let c = numCasasCasilla(casilla);
+                valor = 500 + c * 300;
+
+                if (Number(divDinero2.textContent) >= valor) {
+                    divDinero2.textContent = (Number(divDinero2.textContent) - valor) + "";
+                    divDinero1.textContent = (Number(divDinero1.textContent) + valor) + "";
+                    alert("Le has pagado " + valor + " € a J1")
+                } else {
+                    victoria = true;
+                    alert("No tienes dinero suficiente. Has perdido")
+                }
+
+
+            } else if (listaCasillas2.includes(casilla) && ficha === f1) {
                 console.log("F1 cae en casilla de f2")
-            }else{
+                let c = numCasasCasilla(casilla);
+                valor = 500 + c * 300;
+
+                if (Number(divDinero1.textContent) >= valor) {
+                    divDinero1.textContent = (Number(divDinero1.textContent) - valor) + "";
+                    divDinero2.textContent = (Number(divDinero2.textContent) + valor) + "";
+                    alert("Le has pagado " + valor + " € a J2")
+
+                } else {
+                    victoria = true;
+                    alert("No tienes dinero suficiente. Has perdido")
+                }
+
+
+            } else {
                 console.log("casilla no es de nadie");
-                if(confirm("¿Quieres comprar la calle?") == true){
-                    if(ficha === f1){
-                        if(Number(divDinero1.textContent)>=800){
+                console.log("color: " + casilla.classList[1]);
+                console.log("Numero de casas: " + numCasasCasilla(casilla));
+                if (confirm("¿Quieres comprar la calle?") == true) {
+                    if (ficha === f1) {
+                        if (Number(divDinero1.textContent) >= 800) {
                             listaCasillas1.push(casilla);
-                            divDinero1.textContent = (Number(divDinero1.textContent)-800)+"";
-                        }else{
+                            divDinero1.textContent = (Number(divDinero1.textContent) - 800) + "";
+                        } else {
                             alert("No tienes dinero suficiente")
                         }
-                        
-                    }else if(ficha === f2){
-                        if(Number(divDinero1.textContent)>=800){
+
+                    } else if (ficha === f2) {
+                        if (Number(divDinero1.textContent) >= 800) {
                             listaCasillas2.push(casilla);
-                            divDinero2.textContent = (Number(divDinero2.textContent)-800)+"";
-                        }else{
+                            divDinero2.textContent = (Number(divDinero2.textContent) - 800) + "";
+                        } else {
                             alert("No tienes dinero suficiente")
                         }
                     }
                 }
             }
 
-            console.log("casillas 1: "+listaCasillas1);
-            console.log("casillas 2: "+listaCasillas2);
+            console.log("casillas 1: " + listaCasillas1);
+            console.log("casillas 2: " + listaCasillas2);
         }
 
-        function deshabilitarDrag(casilla){
+        function numCasillasColor(ficha, color) {
+            let num = 0;
+            if (ficha == f1) {
+                listaCasillas1
+                for (i = 0; i < listaCasillas1.length; i++) {
+                    if (listaCasillas1[i].classList[1] == color) {
+                        num++;
+                    }
+                }
+            } else {
+                listaCasillas2
+                for (i = 0; i < listaCasillas2.length; i++) {
+                    if (listaCasillas2[i].classList[1] == color) {
+                        num++;
+                    }
+                }
+            }
+            return num;
+        }
+
+        function numCasasCasilla(casilla) {
+            let total = 0;
+
+            casas = casilla.getElementsByClassName("casas")[0];
+            console.log(casas.children)
+            for (let i = 0; i < casas.children.length - 1; i++) {
+                console.log(casas.children[i].innerText)
+                if (casas.children[i].innerHTML != "&nbsp;&nbsp;") {
+                    total++;
+                }
+            }
+            //console.log(total)
+            return total;
+        }
+
+        function deshabilitarDrag(casilla) {
 
         }
-        
-        function habilitarDrag(casilla){
+
+        function habilitarDrag(casilla) {
 
         }
 
