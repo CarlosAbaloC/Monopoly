@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Tarjetas</title>
+    <script src="Script.js"></script>
+
     <style>
         body{
             display: flex;
@@ -12,18 +14,17 @@
             margin: 0px;
             background-color: blueviolet;
         }
-        .titulo{
+        #titulo{
             font-size: 1.4em;
             font-weight: bold;
             margin-bottom: 10px;
             padding: 2px;
             border: 2px solid black;
             background-color: rgb(104, 14, 14);
-            color: white;
         }
         .global{
             width: 200px;
-            height: 300px;
+            height: 350px;
             border: 2px solid black;
             border-radius: 10px;
             padding: 10px;
@@ -43,7 +44,7 @@
 
 <body>
     <div class="global">
-        <div class="titulo">Ronda de valencia</div>
+        <div id="titulo">Ronda de valencia</div>
         <div class = "cobrar">
             <p id="Alquiler">Alquiler: 2€</p>
             <p id="casa1">Con 1 casa: 10€</p>
@@ -58,8 +59,54 @@
             <p id="pcasilla">Precio de la propiedad: 60€</p>
         </div>
     </div>
-    
-    
+    <script>
+
+        window.onload = function() {
+            //Obtienes toda la url con lo que envias a boton
+            const cadenaURL = window.location.search;
+            //Busca el objeto que tiene los valores
+            const parametro = new URLSearchParams(cadenaURL);
+            console.log("Lo que vale el parametro es " + parametro);
+
+            const id = parametro.get('id');
+            console.log(id);
+            //Obtienes los datos asociados
+            const cartaJSON = parametro.get('carta');
+            console.log(cartaJSON)
+            //Decodificar el json
+            const carta = JSON.parse(decodeURIComponent(cartaJSON));
+console.log(carta.nombre)
+            //Nombre por su cuenta falla
+            //const nombre = carta.nombre;
+            const sCasa = carta.sCasa;
+            const cUno = carta.cUno;
+            const cDos = carta.cDos;
+            const cTres = carta.cTres;
+            const cCuatro = carta.cCuatro;
+            const hotel = carta.hotel;
+            const pCasa = carta.pCasa;
+            const pHotel = carta.pHotel;
+            const pCasilla = carta.pCasilla;
+            const cFondo = carta.cFondo;
+            console.log(cFondo);
+
+            document.getElementById("titulo").style.backgroundColor = cFondo;
+            document.getElementById("titulo").innerHTML =  carta.nombre;
+            document.getElementById("Alquiler").innerHTML = "Alquiler: " + sCasa;
+            document.getElementById("casa1").innerHTML = "Con 1 casa: " + cUno;
+            document.getElementById("casa2").innerHTML = "Con 2 casas: " + cDos;
+            document.getElementById("casa3").innerHTML = "Con 3 casas: " + cTres;
+            document.getElementById("casa4").innerHTML = "Con 4 casas: " + cCuatro;
+            document.getElementById("hotel").innerHTML = "Con hotel: " + hotel;
+            document.getElementById("pcasa").innerHTML = "Precio por Casa: " + pCasa;
+            document.getElementById("photel").innerHTML = "Precio por Hotel: " + pHotel;
+            document.getElementById("pcasilla").innerHTML = "Precio de la propiedad: " + pCasilla;
+
+
+
+        }
+
+    </script>
 </body>
 
 </html>
