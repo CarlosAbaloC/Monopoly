@@ -827,7 +827,7 @@
             function actualizarCronometro() {
                 segundos--;
                 if (segundos < 0) {
-                    segundos = 59;
+                    segundos = 559;
                     minutos--;
                 }
 
@@ -835,6 +835,7 @@
                     // Aquí puedes añadir acciones una vez que la cuenta regresiva llegue a cero
                     alert("¡Tiempo terminado!");
                     clearInterval(intervalo);
+                    sonidoFinal();
                     minutos = 0;
                     segundos = 0;
                 }
@@ -1139,15 +1140,10 @@
                     //textoTurno.textContent = "Turno de la ficha "+((turno%4+1))
 
                 };
-
             }
-
         }
 
-
-        function llamarArray() {
-            
-        }
+        sonidoFondo();
     </script>
 
 

@@ -3,6 +3,7 @@ var dinero2 = 3000;
 let totalCajas = document.getElementsByClassName("casilla").length;
 let mensaje = document.getElementById("mensajeMovimiento");
 var dineroComunidad = 0;
+let fondo;
 
 function allowDrop(ev) {
     ev.preventDefault();
@@ -291,6 +292,7 @@ function listaFunciones(idCasilla, idFicha) {
         alert("Ha entrado en comunidad");
         arrayComunidad(idFicha);
     } else if(clase.includes("color")) {
+
         alert("Ha entrado en los colores");
 
         if(clase.includes("rojo")) {
@@ -309,11 +311,50 @@ function listaFunciones(idCasilla, idFicha) {
             
         }
     } else if(clase.includes("policia")) {
-
+        sonidos("policia");
     } else if(clase.includes("parking")) {
-        
+        sonidos("parking");
+
     } else if(clase.includes("inicio")) {
-        
+        sonidos("inicio");
+
     }
 
+}
+
+
+function sonidos(informacion) {
+    if(informacion === "policia") {
+        let sound = new Audio("./sonidos/musicaPolicia.mp3");
+        sound.play();
+    } else if(informacion === "parking") {
+        let sound = new Audio("./sonidos/musicaParking.mp3");
+        sound.play();
+    }
+    //CARCEL Sound Effect from <a href="https://pixabay.com/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=100823">Pixabay</a>
+    //DINERO https://pixabay.com/es/sound-effects/cashier-quotka-chingquot-sound-effect-129698/
+    //Musica relajante Music by <a href="https://pixabay.com/es/users/fassounds-3433550/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=160166">FASSounds</a> from <a href="https://pixabay.com/music//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=160166">Pixabay</a>
+    //Sound Effect from <a href="https://pixabay.com/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=64657">Pixabay</a>
+}
+function sonidoFondo() {
+
+    fondo = new Audio("./sonidos/musicaFondo.mp3");
+    fondo.play();
+    fondo.addEventListener('ended', reiniciar);
+
+}
+
+function reiniciar() {
+    console.log("Reiniciar");
+    //Reinicia el audio
+    fondo.currentTime = 0; 
+    //Vuelve a ponerlo
+    fondo.play();
+}
+
+function sonidoFinal() {
+    console.log("sonidoFinal");
+    fondo.pause();
+    final = new Audio("./sonidos/musicaFinal.mp3");
+    final.play();
 }
