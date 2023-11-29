@@ -8,20 +8,31 @@ function allowDrop(ev) {
     ev.preventDefault();
 }
 
-function drag(ev) {
+function drag(ev, padre) {
+    //Text y parent son las claves para luego encontrarlo en el drop
     ev.dataTransfer.setData("text", ev.target.id);
+    ev.dataTransfer.setData("padre", padre );
 }
 
 function drop(ev) {
     ev.preventDefault();
     //Obtiene los datos de la carta copiada
     var data = ev.dataTransfer.getData("text");
+    var datoPadre = ev.dataTransfer.getData("padre");
+    console.log("Soltando en:", ev.target.id);
+    console.log("ID del elemento arrastrado:", ev.dataTransfer.getData("text"));
+    console.log("ID del padre:", ev.dataTransfer.getData("padre"));
+
     var targetElement = ev.target;
     var casilla = ev.target.id;
     //Copia el objeto arrastrado
-    var copiaImg = document.getElementById(data).cloneNode(true);
+    debugger;
+    var copiaImg = document.getElementById(datoPadre).cloneNode(true);
     copiaImg.id = "copia" + data; //Tiene el mismo id pero con copia delante
     copiaImg.draggable = false; //Para quitar el drag
+    var idCambio = "copia" + data;
+    document.getElementById("carta3").setAttribute("id", idCambio);
+    document.getElementById(idCambio).setAttribute("draggable", false);
 
     //Donde la guarda
     document.getElementById(casilla).appendChild(copiaImg);
@@ -133,7 +144,6 @@ function arrayCartas(boton) {
 
 
 function arraySuerte(idFicha) {
-    var idFicha = "ficha1";
     var idAleatorio = (Math.floor(Math.random() * 22) + 1);
     var posicion = "nada";
     console.log(idAleatorio);
@@ -163,12 +173,12 @@ function arraySuerte(idFicha) {
         { id: 22, suerte: { accion: "cobrar", descripcion: "Ganas un concurso de cocina", cantidad: 20 }}
     ];
 
-    var carta = cartasSuerte.find(item => item.id === idAleatorio).suerte;
+    var suerte = cartasSuerte.find(item => item.id === idAleatorio).suerte;
 
-    alert("ESTA ES LA DESCRIPTCIOM" + carta.descripcion);
+    alert("ESTA ES LA DESCRIPTCIOM" + suerte.descripcion);
     if(idFicha === "ficha1") {
-        if(carta.accion === "pagar") {
-            dineroJ1 -= suerte.pagas;
+        if(suerte.accion === "pagar") {
+            dineroJ1 -= parseInt(suerte.pagas);
             alert("Ficha1: " + suerte.pagas);
         }
         else if(carta.accion ==="mover") {
@@ -176,15 +186,15 @@ function arraySuerte(idFicha) {
             //casillaInicio = document.getElementsByClassName(carta.accion);
             //espFichas = casillaInicio.getElementsByClassName('fila3')[0];
             //espFichas.appendChild(ficha);
-            alert("Ficha1: " + carta.avanzar);
+            alert("Ficha1: " + suerte.avanzar);
         }else {
             dineroJ1 += carta.cantidad;
-            alert("Ficha1: " + carta.cantidad);
+            alert("Ficha1: " + suerte.cantidad);
         }
     } else {
         if(carta.accion === "pagar") {
             dineroJ2 -= suerte.pagas;
-            alert("Ficha1: " + carta.pagas);
+            alert("Ficha1: " + suerte.pagas);
         }
         else if(carta.accion ==="mover") {
             posicion = carta.avanzar;
@@ -262,4 +272,48 @@ function arrayComunidad(idFicha) {
         }    
     }
     
+}
+
+
+function listaFunciones(idCasilla, idFicha) {
+    var busClase = document.getElementById(idCasilla);
+    console.log("La ficha es " + idFicha);
+    //classList crea un DOMTokenList, from para crearse 
+    var clase = Array.from(busClase.classList);
+    console.log("La clase de la casilla es " + clase);
+
+    
+
+    if(clase.includes("suerte")) {
+        alert("Ha entrado en suerte");
+        arraySuerte(idFicha);
+    } else if(clase.includes("comunidad")) {
+        alert("Ha entrado en comunidad");
+        arrayComunidad(idFicha);
+    } else if(clase.includes("color")) {
+        alert("Ha entrado en los colores");
+
+        if(clase.includes("rojo")) {
+
+        } else if(clase.includes("verde")) {
+
+        }else if(clase.includes("amarillo")) {
+            
+        }else if(clase.includes("naranja")) {
+            
+        }else if(clase.includes("azul")) {
+            
+        }else if(clase.includes("celeste")) {
+            
+        }else if(clase.includes("marron")) {
+            
+        }
+    } else if(clase.includes("policia")) {
+
+    } else if(clase.includes("parking")) {
+        
+    } else if(clase.includes("inicio")) {
+        
+    }
+
 }

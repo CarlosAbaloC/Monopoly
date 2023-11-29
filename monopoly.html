@@ -291,7 +291,7 @@
                             <button id="mostrar" onclick="arrayCartas('2')">&#128269;</button>
                         </div>
 
-                        <div class="fila2">
+                        <div class="fila2" id="f2">
                             <img src="2.png" class="calle" id="carta111" alt="" draggable="false"
                                 ondragstart="drag(event , this.parentElement.id)">
                         </div>
@@ -325,8 +325,8 @@
                             <button id="mostrar"  onclick="arrayCartas('4')">&#128269;</button>
                         </div>
 
-                        <div class="fila2">
-                            <img src="4.png" class="calle" id="carta3" alt="" draggable="false"
+                        <div class="fila2" id="f4">
+                            <img src="4.png" class="calle" id="carta3" alt="" draggable="true"
                                 ondragstart="drag(event, this.parentElement.id)">
                         </div>
                         <div class="fila3"></div>
@@ -342,9 +342,9 @@
                             <button id="mostrar"  onclick="arrayCartas('5')">&#128269;</button>
                         </div>
 
-                        <div class="fila2">
+                        <div class="fila2" id="f5">
                             <img src="5.png" class="calle" id="carta4" alt="" draggable="false"
-                                ondragstart="drag(event, this.parentElement.id)">
+                                ondragstart="drag(event, this.parentElement.classList)">
                         </div>
                         <div class="fila3"></div>
                     </div>
@@ -361,7 +361,7 @@
                             <button id="mostrar">&#128269;</button>
                         </div>
 
-                        <div class="fila2">
+                        <div class="fila2" id="f6">
                             <img src="Agua.png" class="calle" id="carta5" alt="" draggable="false"
                                 ondragstart="drag(event, this.parentElement.id)">
                         </div>
@@ -379,7 +379,7 @@
                             <button id="mostrar"  onclick="arrayCartas('7')">&#128269;</button>
                         </div>
 
-                        <div class="fila2">
+                        <div class="fila2" id="f7">
                             <img src="7.png" class="calle" id="carta6" alt="" draggable="false"
                                 ondragstart="drag(event, this.parentElement.id)">
 
@@ -417,7 +417,7 @@
                             <button id="mostrar"  onclick="arrayCartas('28')">&#128269;</button>
                         </div>
 
-                        <div class="fila2">
+                        <div class="fila2" id="f28">
                             <img src="28.png" class="calle" id="carta7" alt="" draggable="false"
                                 ondragstart="drag(event, this.parentElement.id)">
 
@@ -436,7 +436,7 @@
                             <button id="mostrar"  onclick="arrayCartas('9')">&#128269;</button>
                         </div>
 
-                        <div class="fila2">
+                        <div class="fila2" id="f9">
                             <img src="9.png" class="calle" id="carta8" alt="" draggable="false"
                                 ondragstart="drag(event, this.parentElement.id)">
 
@@ -490,7 +490,7 @@
                             <button id="mostrar"  onclick="arrayCartas('26')">&#128269;</button>
                         </div>
 
-                        <div class="fila2">
+                        <div class="fila2" id="f26">
                             <img src="26.png" class="calle" id="carta11" alt="" draggable="false"
                                 ondragstart="drag(event, this.parentElement.id)">
 
@@ -508,7 +508,7 @@
                             <button id="mostrar"  onclick="arrayCartas('11')">&#128269;</button>
                         </div>
 
-                        <div class="fila2">
+                        <div class="fila2" id="f11">
                             <img src="11.png" class="calle" id="carta12" alt="" draggable="false"
                                 ondragstart="drag(event, this.parentElement.id)">
 
@@ -526,7 +526,7 @@
                             <button id="mostrar"  onclick="arrayCartas('25')">&#128269;</button>
                         </div>
 
-                        <div class="fila2">
+                        <div class="fila2" id="f25">
                             <img src="25.png" class="calle" id="carta13" alt="" draggable="false"
                                 ondragstart="drag(event, this.parentElement.id)">
 
@@ -544,7 +544,7 @@
                             <button id="mostrar" onclick="arraySuerte('ficha2, fila2')">&#128269;</button>
                         </div>
 
-                        <div class="fila2">
+                        <div class="fila2" id="f12">
                             <img src="Suerte.png" class="calle" id="carta14" alt="" draggable="false"
                                 ondragstart="drag(event)">
 
@@ -562,7 +562,7 @@
                             <button id="mostrar">&#128269;</button>
                         </div>
 
-                        <div class="fila2">
+                        <div class="fila2" id="f24">
                             <img src="Luz.png" class="calle" id="carta23" alt="" draggable="false"
                                 ondragstart="drag(event, this.parentElement.id)">
 
@@ -598,7 +598,7 @@
                             <button id="mostrar"  onclick="arrayCartas('23')">&#128269;</button>
                         </div>
 
-                        <div class="fila2">
+                        <div class="fila2" id="f23">
                             <img src="23.png" class="calle" id="carta16" alt="" draggable="false"
                                 ondragstart="drag(event, this.parentElement.id)">
 
@@ -616,7 +616,7 @@
                             <button id="mostrar"  onclick="arrayCartas('14')">&#128269;</button>
                         </div>
 
-                        <div class="fila2">
+                        <div class="fila2" id="f14">
                             <img src="14.png" class="calle" id="carta17" alt="" draggable="false"
                                 ondragstart="drag(event, this.parentElement.id)">
 
@@ -646,7 +646,7 @@
                             <button id="mostrar"  onclick="arrayCartas('21')">&#128269;</button>
                         </div>
 
-                        <div class="fila2">
+                        <div class="fila2" id="f21">
                             <img src="21.png" class="calle" id="carta18" alt="" draggable="false"
                                 ondragstart="drag(event, this.parentElement.id)">
 
@@ -682,7 +682,7 @@
                             <button id="mostrar"  onclick="arrayCartas('19')">&#128269;</button>
                         </div>
 
-                        <div class="fila2">
+                        <div class="fila2" id="f19">
                             <img src="19.png" class="calle" id="carta20" alt="" draggable="false"
                                 ondragstart="drag(event, this.parentElement.id)">
 
@@ -700,7 +700,7 @@
                             <button id="mostrar"  onclick="arrayCartas('18')">&#128269;</button>
                         </div>
 
-                        <div class="fila2">
+                        <div class="fila2" id="f18">
                             <img src="18.png" class="calle" id="carta21" alt="" draggable="false"
                                 ondragstart="drag(event, this.parentElement.id)">
 
@@ -736,7 +736,7 @@
                             <button id="mostrar"  onclick="arrayCartas('16')">&#128269;</button>
                         </div>
 
-                        <div class="fila2">
+                        <div class="fila2" id="f16">
                             <img src="16.png" class="calle" id="carta23" alt="" draggable="false"
                                 ondragstart="drag(event, this.parentElement.id)">
 
@@ -871,6 +871,7 @@
                     posFinal -= numero_casillas;
                 }
                 dragable(posFinal);
+                listaFunciones(posFinal, ficha.id);
                 // if(posFinal >= numero_casillas-1){
                 //     posFinal = numero_casillas -1
                 //     victoria = true;
