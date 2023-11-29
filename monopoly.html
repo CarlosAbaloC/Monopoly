@@ -243,7 +243,7 @@
         <div class="ui">
 
             <div class="nomJug" id="jug1">
-                <p style="text-align: center;">JUGADOR 1</p>
+                <!-- <p style="text-align: center;">JUGADOR 1</p> -->
             </div>
 
             <div class="info">
@@ -256,7 +256,7 @@
             </div>
 
             <div class="nomJug" id="jug2">
-                <p style="text-align: center;">JUGADOR 2</p>
+                <!-- <p style="text-align: center;">JUGADOR 2</p> -->
             </div>
 
             <div class="propiedades" id="jugador1" ondrop="drop(event)" ondragover="allowDrop(event)">
@@ -784,6 +784,20 @@
             espFichas = casillaInicio.getElementsByClassName('fila3')[0]
             espFichas.appendChild(ficha);
         }
+
+        console.log("Nombre1: "+localStorage.getItem("jug1"))
+
+        //ASIGNAR NOMBRE
+        divNombre1 = document.createElement("p")
+        divNombre1.textContent = localStorage.getItem("jug1");
+        document.getElementById("jug1").appendChild(divNombre1);
+
+        divNombre2 = document.createElement("p")
+        divNombre2.textContent = localStorage.getItem("jug2");
+        document.getElementById("jug2").appendChild(divNombre2);
+
+
+        
 
         //ASIGNAR DINERO
         divDinero1 = document.createElement("p");
