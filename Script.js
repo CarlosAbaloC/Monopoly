@@ -4,6 +4,7 @@ let totalCajas = document.getElementsByClassName("casilla").length;
 let mensaje = document.getElementById("mensajeMovimiento");
 var dineroComunidad = 0;
 let fondo;
+let puntuacion;
 
 function allowDrop(ev) {
     ev.preventDefault();
@@ -357,4 +358,14 @@ function sonidoFinal() {
     fondo.pause();
     final = new Audio("./sonidos/musicaFinal.mp3");
     final.play();
+}
+
+function listaGanadores() {
+    var ganador = localStorage.getItem("jug1");
+    alert("El ganador es " + ganador);
+    puntuacion = 0;
+    resultado = ganador + ": " + puntuacion + " puntos";
+
+    window.open(`carta.html`, '_blank', `width=300,height=400,left=${posicionX},top=${posicionY}`);
+
 }
