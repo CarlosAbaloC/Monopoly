@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ganadores</title>
+    <script src="Script.js"></script>
+
+</head>
+<body>
+    <div class="listaGeneral">
+        
+    </div>
+    <button id="btnVolverLogin">Haz clic</button>
+
+    <script>
+
+        window.onload = function() {
+            
+            let creaLista = document.createElement("li");
+            
+
+
+            document.getElementById('btnVolverLogin').addEventListener('click', function() {
+                // Redirigir a la página de login (supongamos que tu archivo de login se llama login.html)
+                window.location.href = 'login.html';
+            });
+
+        }
+
+    </script>
+</body>
+</html>

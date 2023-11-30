@@ -288,7 +288,7 @@
                             <p>&nbsp;1</p>
                             <p>&nbsp;&nbsp;</p>
                             <p>&nbsp;&nbsp;</p>
-                            <button id="mostrar" onclick="arrayCartas('2')">&#128269;</button>
+                            <button id="mostrar" onclick="arrayCartas('1','2')">&#128269;</button>
                         </div>
 
                         <div class="fila2" id="f2">
@@ -322,7 +322,7 @@
                             <p>&nbsp;&nbsp;</p>
                             <p>&nbsp;&nbsp;</p>
                             <p>&nbsp;&nbsp;</p>
-                            <button id="mostrar"  onclick="arrayCartas('4')">&#128269;</button>
+                            <button id="mostrar"  onclick="arrayCartas('1','4')">&#128269;</button>
                         </div>
 
                         <div class="fila2" id="f4">
@@ -339,7 +339,7 @@
                             <p>&nbsp;&nbsp;</p>
                             <p>&nbsp;&nbsp;</p>
                             <p>&nbsp;&nbsp;</p>
-                            <button id="mostrar"  onclick="arrayCartas('5')">&#128269;</button>
+                            <button id="mostrar"  onclick="arrayCartas('1','5')">&#128269;</button>
                         </div>
 
                         <div class="fila2" id="f5">
@@ -376,7 +376,7 @@
                             <p>&nbsp;1</p>
                             <p>&nbsp;1</p>
                             <p>&nbsp;&nbsp;</p>
-                            <button id="mostrar"  onclick="arrayCartas('7')">&#128269;</button>
+                            <button id="mostrar"  onclick="arrayCartas('1','7')">&#128269;</button>
                         </div>
 
                         <div class="fila2" id="f7">
@@ -414,7 +414,7 @@
                             <p>&nbsp;&nbsp;</p>
                             <p>&nbsp;&nbsp;</p>
                             <p>&nbsp;&nbsp;</p>
-                            <button id="mostrar"  onclick="arrayCartas('28')">&#128269;</button>
+                            <button id="mostrar"  onclick="arrayCartas('1','28')">&#128269;</button>
                         </div>
 
                         <div class="fila2" id="f28">
@@ -433,7 +433,7 @@
                             <p>&nbsp;&nbsp;</p>
                             <p>&nbsp;&nbsp;</p>
                             <p>&nbsp;&nbsp;</p>
-                            <button id="mostrar"  onclick="arrayCartas('9')">&#128269;</button>
+                            <button id="mostrar"  onclick="arrayCartas('1','9')">&#128269;</button>
                         </div>
 
                         <div class="fila2" id="f9">
@@ -487,7 +487,7 @@
                             <p>&nbsp;&nbsp;</p>
                             <p>&nbsp;&nbsp;</p>
                             <p>&nbsp;&nbsp;</p>
-                            <button id="mostrar"  onclick="arrayCartas('26')">&#128269;</button>
+                            <button id="mostrar"  onclick="arrayCartas('1','26')">&#128269;</button>
                         </div>
 
                         <div class="fila2" id="f26">
@@ -505,7 +505,7 @@
                             <p>&nbsp;&nbsp;</p>
                             <p>&nbsp;&nbsp;</p>
                             <p>&nbsp;&nbsp;</p>
-                            <button id="mostrar"  onclick="arrayCartas('11')">&#128269;</button>
+                            <button id="mostrar"  onclick="arrayCartas('1','11')">&#128269;</button>
                         </div>
 
                         <div class="fila2" id="f11">
@@ -523,7 +523,7 @@
                             <p>&nbsp;&nbsp;</p>
                             <p>&nbsp;&nbsp;</p>
                             <p>&nbsp;&nbsp;</p>
-                            <button id="mostrar"  onclick="arrayCartas('25')">&#128269;</button>
+                            <button id="mostrar"  onclick="arrayCartas('1','25')">&#128269;</button>
                         </div>
 
                         <div class="fila2" id="f25">
@@ -613,7 +613,7 @@
                             <p>&nbsp;&nbsp;</p>
                             <p>&nbsp;&nbsp;</p>
                             <p>&nbsp;&nbsp;</p>
-                            <button id="mostrar"  onclick="arrayCartas('14')">&#128269;</button>
+                            <button id="mostrar"  onclick="arrayCartas('1','14')">&#128269;</button>
                         </div>
 
                         <div class="fila2" id="f14">
@@ -643,7 +643,7 @@
                             <p>&nbsp;&nbsp;</p>
                             <p>&nbsp;&nbsp;</p>
                             <p>&nbsp;&nbsp;</p>
-                            <button id="mostrar"  onclick="arrayCartas('21')">&#128269;</button>
+                            <button id="mostrar"  onclick="arrayCartas('1','21')">&#128269;</button>
                         </div>
 
                         <div class="fila2" id="f21">
@@ -679,7 +679,7 @@
                             <p>&nbsp;&nbsp;</p>
                             <p>&nbsp;&nbsp;</p>
                             <p>&nbsp;&nbsp;</p>
-                            <button id="mostrar"  onclick="arrayCartas('19')">&#128269;</button>
+                            <button id="mostrar"  onclick="arrayCartas('1','19')">&#128269;</button>
                         </div>
 
                         <div class="fila2" id="f19">
@@ -697,7 +697,7 @@
                             <p>&nbsp;&nbsp;</p>
                             <p>&nbsp;&nbsp;</p>
                             <p>&nbsp;&nbsp;</p>
-                            <button id="mostrar"  onclick="arrayCartas('18')">&#128269;</button>
+                            <button id="mostrar"  onclick="arrayCartas('1','18')">&#128269;</button>
                         </div>
 
                         <div class="fila2" id="f18">
@@ -733,7 +733,7 @@
                             <p>&nbsp;&nbsp;</p>
                             <p>&nbsp;&nbsp;</p>
                             <p>&nbsp;&nbsp;</p>
-                            <button id="mostrar"  onclick="arrayCartas('16')">&#128269;</button>
+                            <button id="mostrar"  onclick="arrayCartas('1','16')">&#128269;</button>
                         </div>
 
                         <div class="fila2" id="f16">
@@ -828,6 +828,10 @@
                 segundos--;
                 if (segundos < 0) {
                     segundos = 59;
+                    
+                    /********************************************************/
+                    //segundos=5;
+                    
                     minutos--;
                 }
 
@@ -866,6 +870,9 @@
         function moverNCasillas(ficha, despl) {
             console.log("Ficha: " + ficha)
             estilos = getComputedStyle(ficha);
+            
+            //*******************************************CAMBIO SOLO PARA
+            despl = 6;
 
             if (victoria === false) {
                 ficha.style.zIndex = 1;
@@ -887,7 +894,6 @@
                     posFinal -= numero_casillas;
                 }
                 dragable(posFinal);
-                listaFunciones(posFinal, ficha.id);
                 // if(posFinal >= numero_casillas-1){
                 //     posFinal = numero_casillas -1
                 //     victoria = true;
@@ -913,6 +919,7 @@
                         duration: 2000,
                         easing: "ease"
                     }
+                    
                 );
 
 
@@ -933,7 +940,10 @@
                         analizarCasilla(ficha, casillaFin)
                     }
                 };
+                
             }
+            listaFunciones(posFinal, ficha.id);
+
 
         }
 
@@ -1019,6 +1029,7 @@
                         if (Number(divDinero1.textContent) >= 800) {
                             listaCasillas1.push(casilla);
                             divDinero1.textContent = (Number(divDinero1.textContent) - 800) + "";
+                            queEs(listaCasillas1);
                         } else {
                             alert("No tienes dinero suficiente")
                         }

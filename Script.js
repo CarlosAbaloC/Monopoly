@@ -1,10 +1,13 @@
 var dinero1 = 3000;
 var dinero2 = 3000;
-let totalCajas = document.getElementsByClassName("casilla").length;
+//Hay que hacerlo dos veces porque let y const son variables de "bloque"
+let totalCasillas = document.getElementsByClassName("casilla").length;
+
 let mensaje = document.getElementById("mensajeMovimiento");
 var dineroComunidad = 0;
 let fondo;
 let puntuacion;
+let cartaJSON;
 
 function allowDrop(ev) {
     ev.preventDefault();
@@ -28,7 +31,7 @@ function drop(ev) {
     var targetElement = ev.target;
     var casilla = ev.target.id;
     //Copia el objeto arrastrado
-    debugger;
+    //debugger;
     var copiaImg = document.getElementById(datoPadre).cloneNode(true);
     copiaImg.id = "copia" + data; //Tiene el mismo id pero con copia delante
     copiaImg.draggable = false; //Para quitar el drag
@@ -96,7 +99,7 @@ function nodragable(casilla)  {
     img.setAttribute("draggable", "false");
 }
 
-function arrayCartas(boton) {
+function arrayCartas(funcion, boton) {
     document.getElementById(boton);
     let listaCartas = [
         { id:2, calle:{nombre:"Avenida de america", cFondo:"red", sCasa:18, cUno:90, cDos:250, cTres:700, cCuatro:875, hotel:1050, pCasa:150, pHotel:150, pCasilla:1}},
@@ -116,13 +119,26 @@ function arrayCartas(boton) {
         { id:16, calle:{nombre:"Ronda de Valencia", cFondo: "darkbrown", sCasa:2, cUno:10, cDos:30, cTres:90, cCuatro:160, hotel:250, pCasa:50, pHotel:50, pCasilla:1}}
     ];
 
+    switch(funcion) {
+        case "1":   var carta = listaCartas.find(item => item.id.toString() === boton).calle;
+                    cartaJSON = JSON.stringify(carta);
+                    alert(JSON.stringify(carta));
+                    ventanaCarta(boton, cartaJSON);
+                    break;
+        case "3":   var carta = listaCartas.find(item => item.id.toString() === boton).calle;
+                    cartaJSON = JSON.stringify(carta);
+                    alert(JSON.stringify(carta));
+                    break;
+    }
     
-    var carta = listaCartas.find(item => item.id.toString() === boton).calle;
-    const cartaJSON = JSON.stringify(carta);
-    alert(JSON.stringify(carta));
 
 
 
+  
+
+    alert("Has pulsado en el elemento: " + boton);
+}
+function ventanaCarta(boton, carta) {
     //Medir el tamaño de la pantalla
     const anchoPantalla = window.screen.width;
     const altoPantalla = window.screen.height;
@@ -132,8 +148,9 @@ function arrayCartas(boton) {
     const posicionY = (altoPantalla - 400) / 2;
 
     //El encode es para evitar caracteres especiales y codificar datos sensibles
-    window.open(`carta.html?id=${boton}&carta=${encodeURIComponent(cartaJSON)}`, '_blank', `width=300,height=400,left=${posicionX},top=${posicionY}`);
+    window.open(`carta.html?id=${boton}&carta=${encodeURIComponent(carta)}`, '_blank', `width=300,height=400,left=${posicionX},top=${posicionY}`);
 
+  
     /*
     window.open(`carta.html?id=${boton}&sCasa=${carta.sCasa}&cUno=${carta.cUno}
     &cDos=${carta.cDos}&cTres=${carta.cTres}&cCuatro=${carta.cCuatro}
@@ -141,7 +158,6 @@ function arrayCartas(boton) {
     &pCasilla=${carta.pCasilla}`, '_blank', `width=300,height=400,left=${posicionX},top=${posicionY}`);
     */
 
-    alert("Has pulsado en el elemento: " + boton);
 }
 
 
@@ -181,31 +197,59 @@ function arraySuerte(idFicha) {
     if(idFicha === "ficha1") {
         if(suerte.accion === "pagar") {
             dineroJ1 -= parseInt(suerte.pagas);
-            alert("Ficha1: " + suerte.pagas);
+            alert("Tienes que pagar: " + suerte.pagas);
+            divDinero1.textContent = (Number(divDinero1.textContent) - suerte.pagas) + "";
+
         }
-        else if(carta.accion ==="mover") {
-            posicion = carta.avanzar;
+        else if(suerte.accion ==="mover") {
+            posicion = suerte.avanzar;
             //casillaInicio = document.getElementsByClassName(carta.accion);
             //espFichas = casillaInicio.getElementsByClassName('fila3')[0];
             //espFichas.appendChild(ficha);
-            alert("Ficha1: " + suerte.avanzar);
+            alert("Te vas ha mover hasta: " + suerte.avanzar);
+            //debugger;
+
+            if(suerte.avanzar === "lujo") {
+                var posicionFinal = 13;
+            } else {
+                var posicionFinal = 15;
+            }
+
+            alert("El id del padre es " + posicionFinal)
+            movimientoFijo(idFicha, posicionFinal)
         }else {
-            dineroJ1 += carta.cantidad;
-            alert("Ficha1: " + suerte.cantidad);
+            dineroJ1 += suerte.cantidad;
+            alert("Tienes que cobrar: " + suerte.cantidad);
+            divDinero1.textContent = (Number(divDinero1.textContent) + suerte.cantidad) + "";
+
         }
     } else {
-        if(carta.accion === "pagar") {
+        if(suerte.accion === "pagar") {
             dineroJ2 -= suerte.pagas;
-            alert("Ficha1: " + suerte.pagas);
+            alert("Tienes que pagar: " + suerte.pagas);
+            divDinero1.textContent = (Number(divDinero1.textContent) - suerte.pagas) + "";
+
         }
-        else if(carta.accion ==="mover") {
-            posicion = carta.avanzar;
+        else if(suerte.accion ==="mover") {
+            posicion = suerte.avanzar;
             //casillaInicio = document.getElementsByClassName(carta.accion);
             //espFichas = casillaInicio.getElementsByClassName('fila3')[0];
             //espFichas.appendChild(ficha);
-            alert("Ficha1: " + carta.avanzar);
+
+            if(suerte.avanzar === "lujo") {
+                var posicionFinal = 13;
+            } else {
+                var posicionFinal = 15;
+            }
+
+            alert("Tienes que avanzar hasta: " + suerte.avanzar);
+            movimientoFijo(idFicha, posicionFinal)
+
         }else {
-            dineroJ2 += carta.cantidad;
+            dineroJ2 += suerte.cantidad;
+            divDinero1.textContent = (Number(divDinero1.textContent) + suerte.cantidad) + "";
+            alert("Tienes que cobrar: " + suerte.cantidad);
+
         }
     }
   
@@ -246,15 +290,19 @@ function arrayComunidad(idFicha) {
                 total += carta.costoCasa * casas;
                 total += carta.costoHotel * hoteles;
                 dineroComunidad += total;
-                dineroJ1 -= total;
+                divDinero1.textContent = (Number(divDinero1.textContent) - total) + "";
             }
             else {
                 dineroComunidad +=  carta.pagas;
                 dineroJ1 -= carta.pagas;
+                divDinero1.textContent = (Number(divDinero1.textContent) - carta.pagas) + "";
+
             }
         }
         else {
             dineroJ1 += carta.cantidad;
+            divDinero1.textContent = (Number(divDinero1.textContent) + carta.cantidad) + "";
+
         }    
     } else {
         if(carta.accion === "pagar") {
@@ -278,6 +326,7 @@ function arrayComunidad(idFicha) {
 
 
 function listaFunciones(idCasilla, idFicha) {
+
     var busClase = document.getElementById(idCasilla);
     console.log("La ficha es " + idFicha);
     //classList crea un DOMTokenList, from para crearse 
@@ -312,11 +361,15 @@ function listaFunciones(idCasilla, idFicha) {
             
         }
     } else if(clase.includes("policia")) {
+        movimientoFijo(idFicha, "22")
         sonidos("policia");
     } else if(clase.includes("parking")) {
+        divDinero1.textContent = (Number(divDinero1.textContent) + dineroComunidad) + "";
+        dineroComunidad = 0;
         sonidos("parking");
 
     } else if(clase.includes("inicio")) {
+        divDinero1.textContent = (Number(divDinero1.textContent) - suerte.pagas) + "";
         sonidos("inicio");
 
     }
@@ -366,6 +419,87 @@ function listaGanadores() {
     puntuacion = 0;
     resultado = ganador + ": " + puntuacion + " puntos";
 
-    window.open(`carta.html`, '_blank', `width=300,height=400,left=${posicionX},top=${posicionY}`);
+    //Con el self te obliga a volver a escribir a los jugadores, asi crearias una nueva partida
+    window.open('ganadores.html', '_self');
+
+}
+
+function queEs(listaCasillas) {
+    listaCasillas.forEach((casilla, index) => {
+        console.log(`Elemento ${index}:`, casilla.id);
+        var idCasilla = casilla.id;
+        console.log("Aqui esta el id de la casilla: " + idCasilla);
+        arrayCartas("3", idCasilla);
+
+        var carta = JSON.parse(cartaJSON)
+        console.log("PRUEBA ACTUAL SOBRE EL JSON CARTA" + carta.pCasilla);
+      });
+}
+
+
+
+function movimientoFijo(idFicha, final) {
+    ficha = document.getElementById(idFicha);
+    console.log("Ficha: " + ficha);
+
+    estilos = getComputedStyle(ficha);
+
+    if (victoria === false) {
+        ficha.style.zIndex = 1;
+
+        ficha_left = estilos.getPropertyValue("left");; console.log("left: " + ficha_left)
+        ficha_bottom = estilos.getPropertyValue("bottom"); console.log("bottom: " + ficha_bottom)
+
+        posActual = numCasillaFicha(ficha);
+        console.log("Posicion actual ficha " + ficha.id + ": " + posActual);
+        
+
+        posFinal = final;
+        console.log("Posicion final ficha " + ficha.id + ": " + posFinal);
+
+        listaFunciones(posFinal, ficha.id);
+        
+
+        const rectIni = getCasillaEnPos(posActual).getBoundingClientRect();
+        const coordenadaXIni = rectIni.left + window.scrollX;
+        const coordenadaYIni = rectIni.top + window.scrollY;
+        console.log("coordenadaXInicio: " + coordenadaXIni + ", coordenadaYInicio: " + coordenadaYIni)
+
+        const rectFinal = getCasillaEnPos(posFinal).getBoundingClientRect();
+        const coordenadaXFin = rectFinal.left + window.scrollX;
+        const coordenadaYFin = rectFinal.top + window.scrollY;
+        console.log("coordenadaXFinal: " + coordenadaXFin + ", coordenadaYFinal: " + coordenadaYFin)
+
+        // Crea una nueva animación solo para la ficha
+        const animation = ficha.animate(
+            [
+                { transform: 'translate(0, 0) rotate(0deg)' }, // Estado inicial: sin traslación y rotación
+                { transform: `translate(${coordenadaXFin - coordenadaXIni}px, ${coordenadaYFin - coordenadaYIni}px) rotate(720deg)` } // Estado final: traslación y rotación
+            ],
+            {
+                duration: 2000,
+                easing: "ease"
+            }
+        );
+
+
+        animation.onfinish = () => {
+            //ficha.style.left = ficha_left+ "px";
+            //ficha.style.bottom = ficha_bottom+"px"
+            // tablero.children[posActual].removeChild(ficha);
+            // tablero.children[posFinal].appendChild(ficha);
+            casillaIni = document.getElementById(posActual + "")
+            casillaFin = document.getElementById(posFinal + "")
+
+            casillaIni.getElementsByClassName("fila3")[0].removeChild(ficha)
+            casillaFin.getElementsByClassName("fila3")[0].appendChild(ficha)
+
+            if (victoria === true) {
+                alert("VICTORIA")
+            } else {
+                analizarCasilla(ficha, casillaFin);
+            }
+        };
+    }
 
 }
