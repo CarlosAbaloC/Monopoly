@@ -1,5 +1,5 @@
-var dinero1 = 3000;
-var dinero2 = 3000;
+var dinero1;
+var dinero2;
 //Hay que hacerlo dos veces porque let y const son variables de "bloque"
 let totalCasillas = document.getElementsByClassName("casilla").length;
 
@@ -8,6 +8,7 @@ var dineroComunidad = 0;
 let fondo;
 let puntuacion;
 let cartaJSON;
+var dinero;
 
 function allowDrop(ev) {
     ev.preventDefault();
@@ -56,10 +57,10 @@ function drop(ev) {
 
     if (jugadorId === 'jugador1') {
         targetElement.appendChild(document.getElementById(data));
-        dinero1 = dinero1 - 500;
+        
     } else if (jugadorId === 'jugador2') {
         targetElement.appendChild(document.getElementById(data));
-        dinero2 = dinero2 - 500;
+        
     }
 
     
@@ -124,6 +125,8 @@ function arrayCartas(funcion, boton) {
                     cartaJSON = JSON.stringify(carta);
                     alert(JSON.stringify(carta));
                     ventanaCarta(boton, cartaJSON);
+                    break;
+        case "2":   
                     break;
         case "3":   var carta = listaCartas.find(item => item.id.toString() === boton).calle;
                     cartaJSON = JSON.stringify(carta);
@@ -336,6 +339,7 @@ function listaFunciones(idCasilla, idFicha) {
     
 
     if(clase.includes("suerte")) {
+        //debugger;
         alert("Ha entrado en suerte");
         arraySuerte(idFicha);
     } else if(clase.includes("comunidad")) {
@@ -415,12 +419,42 @@ function sonidoFinal() {
 
 function listaGanadores() {
     var ganador = localStorage.getItem("jug1");
+    dinero1 = Number(divDinero1.textContent);
+    console.log("EL GANADOR ES")
+    console.log("ANTES");
+    for(var calles in listaCasillas1) {
+        console.log(listaCasillas1[calles]);
+        var idCalle = listaCasillas1[calles].id;
+        var color = listaCasillas1[calles].classList;
+        arrayCartas()
+        alert("idCalle: " + idCalle);
+        alert("idCalle: " + color);
+
+
+    }
+
+    dinero2 = Number(divDinero2.textContent);
+    console.log("HE ENTRADO");
+
+// Obtén todas las claves almacenadas en localStorage
+var keys = Object.keys(localStorage);
+
+// Itera sobre las claves y obtén los valores
+keys.forEach(function(key) {
+  // Obtén el valor almacenado en localStorage
+  var storedValue = localStorage.getItem(key);
+
+  // Puedes imprimir o procesar el valor según tus necesidades
+  console.log(`${key}: ${storedValue}`);
+});
+
+    
     alert("El ganador es " + ganador);
     puntuacion = 0;
     resultado = ganador + ": " + puntuacion + " puntos";
 
     //Con el self te obliga a volver a escribir a los jugadores, asi crearias una nueva partida
-    window.open('ganadores.html', '_self');
+    //window.open('ganadores.html', '_self');
 
 }
 

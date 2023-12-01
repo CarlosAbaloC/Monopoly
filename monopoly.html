@@ -828,10 +828,6 @@
                 segundos--;
                 if (segundos < 0) {
                     segundos = 59;
-                    
-                    /********************************************************/
-                    //segundos=5;
-                    
                     minutos--;
                 }
 
@@ -870,9 +866,7 @@
         function moverNCasillas(ficha, despl) {
             console.log("Ficha: " + ficha)
             estilos = getComputedStyle(ficha);
-            
-            //*******************************************CAMBIO SOLO PARA
-            despl = 6;
+
 
             if (victoria === false) {
                 ficha.style.zIndex = 1;
@@ -898,7 +892,7 @@
                 //     posFinal = numero_casillas -1
                 //     victoria = true;
                 // }
-
+                //debugger;
                 const rectIni = getCasillaEnPos(posActual).getBoundingClientRect();
                 const coordenadaXIni = rectIni.left + window.scrollX;
                 const coordenadaYIni = rectIni.top + window.scrollY;
@@ -919,7 +913,6 @@
                         duration: 2000,
                         easing: "ease"
                     }
-                    
                 );
 
 
@@ -940,13 +933,12 @@
                         analizarCasilla(ficha, casillaFin)
                     }
                 };
-                
             }
             listaFunciones(posFinal, ficha.id);
 
-
         }
 
+        
         function analizarCasilla(ficha, casilla) {
             if ((listaCasillas1.includes(casilla) && ficha === f1) || (listaCasillas2.includes(casilla) && ficha === f2)) {
                 console.log("F1 cae en casilla de f1")
