@@ -9,6 +9,9 @@ let fondo;
 let puntuacion;
 let cartaJSON;
 var dinero;
+var precioCasa;
+var precioHotel;
+
 
 function allowDrop(ev) {
     ev.preventDefault();
@@ -103,21 +106,21 @@ function nodragable(casilla)  {
 function arrayCartas(funcion, boton) {
     document.getElementById(boton);
     let listaCartas = [
-        { id:2, calle:{nombre:"Avenida de america", cFondo:"red", sCasa:18, cUno:90, cDos:250, cTres:700, cCuatro:875, hotel:1050, pCasa:150, pHotel:150, pCasilla:1}},
-        { id:4, calle:{nombre:"Calle Maria de Molina", cFondo: "red", sCasa:18, cUno:90, cDos:250, cTres:700, cCuatro:875, hotel:1050, pCasa:150, pHotel:150, pCasilla:1}},
-        { id:5, calle:{nombre:"Calle Bailén", cFondo: "yellow", sCasa:22, cUno:110, cDos:330, cTres:800, cCuatro:975, hotel:1150, pCasa:150, pHotel:150, pCasilla:1}},
-        { id:7, calle:{nombre:"Plaza de España", cFondo: "yellow", sCasa:24, cUno:120, cDos:360, cTres:850, cCuatro:1025, hotel:1200, pCasa:150, pHotel:150, pCasilla:1}},
-        { id:28, calle:{nombre:"Calle Serrano", cFondo: "orange", sCasa:14, cUno:70, cDos:200, cTres:550, cCuatro:750, hotel:950, pCasa:100, pHotel:100, pCasilla:1}},
-        { id:9, calle:{nombre:"Puerta del Sol", cFondo: "green", sCasa:26, cUno:130, cDos:390, cTres:900, cCuatro:16100, hotel:1275, pCasa:200, pHotel:200, pCasilla:1}},
-        { id:26, calle:{nombre:"Calle Velázquez", cFondo: "orange", sCasa:16, cUno:80, cDos:220, cTres:600, cCuatro:800, hotel:1000, pCasa:100, pHotel:100, pCasilla:1}},
-        { id:11, calle:{nombre:"Calle Alcalá", cFondo: "green", sCasa:26, cUno:130, cDos:390, cTres:900, cCuatro:1100, hotel:1275, pCasa:200, pHotel:200, pCasilla:1}},
-        { id:25, calle:{nombre:"Calle Alberto Aguilera", cFondo: "purple", sCasa:10, cUno:50, cDos:150, cTres:450, cCuatro:625, hotel:750, pCasa:100, pHotel:100, pCasilla:1}},
-        { id:23, calle:{nombre:"Glorieta de bilbao", cFondo: "purple", sCasa:10, cUno:50, cDos:150, cTres:450, cCuatro:625, hotel:750, pCasa:100, pHotel:100, pCasilla:1}},
-        { id:14, calle:{nombre:"Paseo del prado", cFondo: "darkblue", sCasa:50, cUno:200, cDos:600, cTres:1400, cCuatro:1700, hotel:2000, pCasa200:200, pHotel:200, pCasilla:1}},
-        { id:21, calle:{nombre:"Avenida reina Victoria", cFondo: "lightblue", sCasa:6, cUno:30, cDos:90, cTres:270, cCuatro:400, hotel:550, pCasa:50, pHotel:50, pCasilla:1}},
-        { id:19, calle:{nombre:"Glorieta cuatro caminos", cFondo: "lightblue", sCasa:6, cUno:30, cDos:90, cTres:270, cCuatro:400, hotel:550, pCasa:50, pHotel:50, pCasilla:1}},
-        { id:18, calle:{nombre:"Plaza Lavapies", cFondo: "darkbrown", sCasa:4, cUno:20, cDos:60, cTres:180, cCuatro:320, hotel:450, pCasa:50, pHotel:50, pCasilla:1}},
-        { id:16, calle:{nombre:"Ronda de Valencia", cFondo: "darkbrown", sCasa:2, cUno:10, cDos:30, cTres:90, cCuatro:160, hotel:250, pCasa:50, pHotel:50, pCasilla:1}}
+        { id:2, calle:{nombre:"Avenida de america", cFondo:"red", sCasa:18, cUno:90, cDos:250, cTres:700, cCuatro:875, hotel:1050, pCasa:150, pHotel:150, pCasilla:220}},
+        { id:4, calle:{nombre:"Calle Maria de Molina", cFondo: "red", sCasa:18, cUno:90, cDos:250, cTres:700, cCuatro:875, hotel:1050, pCasa:150, pHotel:150, pCasilla:220}},
+        { id:5, calle:{nombre:"Calle Bailén", cFondo: "yellow", sCasa:22, cUno:110, cDos:330, cTres:800, cCuatro:975, hotel:1150, pCasa:150, pHotel:150, pCasilla:260}},
+        { id:7, calle:{nombre:"Plaza de España", cFondo: "yellow", sCasa:24, cUno:120, cDos:360, cTres:850, cCuatro:1025, hotel:1200, pCasa:150, pHotel:150, pCasilla:280}},
+        { id:28, calle:{nombre:"Calle Serrano", cFondo: "orange", sCasa:14, cUno:70, cDos:200, cTres:550, cCuatro:750, hotel:950, pCasa:100, pHotel:100, pCasilla:200}},
+        { id:9, calle:{nombre:"Puerta del Sol", cFondo: "green", sCasa:26, cUno:130, cDos:390, cTres:900, cCuatro:16100, hotel:1275, pCasa:200, pHotel:200, pCasilla:300}},
+        { id:26, calle:{nombre:"Calle Velázquez", cFondo: "orange", sCasa:16, cUno:80, cDos:220, cTres:600, cCuatro:800, hotel:1000, pCasa:100, pHotel:100, pCasilla:180}},
+        { id:11, calle:{nombre:"Calle Alcalá", cFondo: "green", sCasa:26, cUno:130, cDos:390, cTres:900, cCuatro:1100, hotel:1275, pCasa:200, pHotel:200, pCasilla:300}},
+        { id:25, calle:{nombre:"Calle Alberto Aguilera", cFondo: "purple", sCasa:10, cUno:50, cDos:150, cTres:450, cCuatro:625, hotel:750, pCasa:100, pHotel:100, pCasilla:140}},
+        { id:23, calle:{nombre:"Glorieta de bilbao", cFondo: "purple", sCasa:10, cUno:50, cDos:150, cTres:450, cCuatro:625, hotel:750, pCasa:100, pHotel:100, pCasilla:140}},
+        { id:14, calle:{nombre:"Paseo del prado", cFondo: "darkblue", sCasa:50, cUno:200, cDos:600, cTres:1400, cCuatro:1700, hotel:2000, pCasa200:200, pHotel:200, pCasilla:500}},
+        { id:21, calle:{nombre:"Avenida reina Victoria", cFondo: "lightblue", sCasa:6, cUno:30, cDos:90, cTres:270, cCuatro:400, hotel:550, pCasa:50, pHotel:50, pCasilla:100}},
+        { id:19, calle:{nombre:"Glorieta cuatro caminos", cFondo: "lightblue", sCasa:6, cUno:30, cDos:90, cTres:270, cCuatro:400, hotel:550, pCasa:50, pHotel:50, pCasilla:100}},
+        { id:18, calle:{nombre:"Plaza Lavapies", cFondo: "darkbrown", sCasa:4, cUno:20, cDos:60, cTres:180, cCuatro:320, hotel:450, pCasa:50, pHotel:50, pCasilla:60}},
+        { id:16, calle:{nombre:"Ronda de Valencia", cFondo: "darkbrown", sCasa:2, cUno:10, cDos:30, cTres:90, cCuatro:160, hotel:250, pCasa:50, pHotel:50, pCasilla:60}}
     ];
 
     switch(funcion) {
@@ -128,7 +131,7 @@ function arrayCartas(funcion, boton) {
                     break;
         case "2":   
                     break;
-        case "3":   var carta = listaCartas.find(item => item.id.toString() === boton).calle;
+        case "3":   var carja = listaCartas.find(item => item.id.toString() === boton).calle;
                     cartaJSON = JSON.stringify(carta);
                     alert(JSON.stringify(carta));
                     break;
@@ -328,7 +331,7 @@ function arrayComunidad(idFicha) {
 }
 
 
-function listaFunciones(idCasilla, idFicha) {
+function listaFunciones(posActual,idCasilla, idFicha) {
 
     var busClase = document.getElementById(idCasilla);
     console.log("La ficha es " + idFicha);
@@ -346,8 +349,13 @@ function listaFunciones(idCasilla, idFicha) {
         alert("Ha entrado en comunidad");
         arrayComunidad(idFicha);
     } else if(clase.includes("color")) {
+        if(idFicha.includes("copia")) {
 
-        alert("Ha entrado en los colores");
+        } else {
+            nodragable(posActual);
+            alert("Ha entrado en los colores");
+            dragable(idCasilla);   
+        }
 
         if(clase.includes("rojo")) {
 
@@ -418,40 +426,7 @@ function sonidoFinal() {
 }
 
 function listaGanadores() {
-    var ganador = localStorage.getItem("jug1");
-    dinero1 = Number(divDinero1.textContent);
-    console.log("EL GANADOR ES")
-    console.log("ANTES");
-    for(var calles in listaCasillas1) {
-        console.log(listaCasillas1[calles]);
-        var idCalle = listaCasillas1[calles].id;
-        var color = listaCasillas1[calles].classList;
-        arrayCartas()
-        alert("idCalle: " + idCalle);
-        alert("idCalle: " + color);
-
-
-    }
-
-    dinero2 = Number(divDinero2.textContent);
-    console.log("HE ENTRADO");
-
-// Obtén todas las claves almacenadas en localStorage
-var keys = Object.keys(localStorage);
-
-// Itera sobre las claves y obtén los valores
-keys.forEach(function(key) {
-  // Obtén el valor almacenado en localStorage
-  var storedValue = localStorage.getItem(key);
-
-  // Puedes imprimir o procesar el valor según tus necesidades
-  console.log(`${key}: ${storedValue}`);
-});
-
     
-    alert("El ganador es " + ganador);
-    puntuacion = 0;
-    resultado = ganador + ": " + puntuacion + " puntos";
 
     //Con el self te obliga a volver a escribir a los jugadores, asi crearias una nueva partida
     //window.open('ganadores.html', '_self');
